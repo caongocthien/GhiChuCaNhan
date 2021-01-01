@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
     private void actionMenu(){
         arrayList= new ArrayList<>();
         arrayList.add(new ItemMenu("Home",R.drawable.ic_action_home));
-//        arrayList.add(new ItemMenu("Category",R.drawable.ic_action_category));
-//        arrayList.add(new ItemMenu("Priority",R.drawable.ic_action_note));
-//        arrayList.add(new ItemMenu("Status",R.drawable.ic_action_status));
-//        arrayList.add(new ItemMenu("Note",R.drawable.ic_action_note));
-//        arrayList.add(new ItemMenu("Account",R.drawable.ic_action_account));
-//        arrayList.add(new ItemMenu("Edit Profile",R.drawable.ic_action_edit));
-//        arrayList.add(new ItemMenu("Change Password",R.drawable.ic_action_changepass));
+        arrayList.add(new ItemMenu("Category",R.drawable.ic_action_category));
+        arrayList.add(new ItemMenu("Priority",R.drawable.ic_action_priority));
+        arrayList.add(new ItemMenu("Status",R.drawable.ic_action_status));
+        arrayList.add(new ItemMenu("Note",R.drawable.ic_action_note));
+        arrayList.add(new ItemMenu("Account",R.drawable.ic_action_account));
+        arrayList.add(new ItemMenu("Edit Profile",R.drawable.ic_action_edit));
+        arrayList.add(new ItemMenu("Change Password",R.drawable.ic_action_changepass));
         adapter = new MenuAdapter(this, R.layout.dong_item,arrayList);
         listView.setAdapter(adapter);
     }
