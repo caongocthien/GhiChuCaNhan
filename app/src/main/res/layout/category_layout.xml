@@ -2,7 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CategoryActivity"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +18,7 @@
             android:id="@+id/tvNamePriority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thien "/>
+            android:text="Category "/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
