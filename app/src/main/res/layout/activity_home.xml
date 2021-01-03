@@ -7,16 +7,8 @@
     tools:context=".HomeActivity"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        app:titleTextColor="#fff"
-        app:title="DashBoard Form"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#FF9900"
-        android:id="@+id/toolbar"/>
-
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/piechart"
+        android:id="@+id/pieChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
