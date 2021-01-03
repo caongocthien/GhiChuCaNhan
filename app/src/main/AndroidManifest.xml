@@ -23,7 +23,9 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"></activity>
         <activity android:name=".HomeActivity"></activity>
-        <activity android:name=".CategoryActivity" />
+        <activity android:name=".CategoryActivity" >
+
+        </activity>
         <activity android:name=".NoteActivity" />
         <activity android:name=".StatusActivity" />
         <activity android:name=".PriorityActivity" />
