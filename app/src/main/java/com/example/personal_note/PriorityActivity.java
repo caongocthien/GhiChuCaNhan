@@ -46,19 +46,19 @@ public class PriorityActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
         btnAdd = findViewById(R.id.btnAdd);
-        btnClose = findViewById(R.id.btnClose);
-        edtName = findViewById(R.id.edtName);
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
-//        btnClose.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
+        btnAdd = dialog.findViewById(R.id.btnAdd);
+        btnClose = dialog.findViewById(R.id.btnClose);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
 }
