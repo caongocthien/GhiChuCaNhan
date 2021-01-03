@@ -14,7 +14,7 @@ public class PriorityActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.priotity_layout, container, false);
+        View root = inflater.inflate(R.layout.activity_priority, container, false);
         return root;
     }
 }

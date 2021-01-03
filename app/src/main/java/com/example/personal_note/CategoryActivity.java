@@ -14,7 +14,7 @@ public class CategoryActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.category_layout, container, false);
+        View root = inflater.inflate(R.layout.activity_category, container, false);
         return root;
     }
 }

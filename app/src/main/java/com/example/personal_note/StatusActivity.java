@@ -14,7 +14,7 @@ public class StatusActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.status_layout, container, false);
+        View root = inflater.inflate(R.layout.activity_status, container, false);
         return root;
     }
 }
