@@ -28,14 +28,14 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-        bai2 =(Button)findViewById(R.id.buttonBai3);
-        bai2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent bt2 = new Intent(StatusActivity.this, HomeActivity.class);
-                startActivity(bt2);
-            }
-        });
+//        bai2 =(Button)findViewById(R.id.buttonBai3);
+//        bai2.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent bt2 = new Intent(StatusActivity.this, HomeActivity.class);
+//                startActivity(bt2);
+//            }
+//        });
         button = findViewById(R.id.add);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
