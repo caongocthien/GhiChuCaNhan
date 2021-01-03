@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.personal_note.ui.home.HomeViewModel;
 
 public class NoteActivity extends Fragment {
 
