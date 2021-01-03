@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class StatusActivity extends AppCompatActivity {
-    Button  btnAdd, btnClose;
+    Button  btnAdd, btnClose,bai2;
     Dialog dialog;
     FloatingActionButton button;
     EditText edtName;
@@ -27,6 +28,14 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
+        bai2 =(Button)findViewById(R.id.buttonBai3);
+        bai2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent bt2 = new Intent(StatusActivity.this, HomeActivity.class);
+                startActivity(bt2);
+            }
+        });
         button = findViewById(R.id.add);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,11 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".CategoryActivity">
 
+    <Button
+        android:id="@+id/buttonBai3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:drawableLeft="@drawable/ic_action_back"
+        android:paddingTop="25dp" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FF6200EE"
+        android:paddingLeft="70dp"
+
+        app:title="Danh mục"
+        app:titleTextColor="#fff">
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcCategory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="10dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -22,6 +44,7 @@
         android:layout_alignParentBottom="true"
         android:backgroundTint="#C121C6"
         android:src="@drawable/ic_baseline_add_circle_24" />
+
 
 
 </RelativeLayout>
