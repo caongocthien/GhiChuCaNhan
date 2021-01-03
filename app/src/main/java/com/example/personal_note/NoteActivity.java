@@ -13,14 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.personal_note.ui.home.HomeViewModel;
+
 
 public class NoteActivity extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.note_layout, container, false);
+        View root = inflater.inflate(R.layout.activity_note, container, false);
         return root;
     }
 }
