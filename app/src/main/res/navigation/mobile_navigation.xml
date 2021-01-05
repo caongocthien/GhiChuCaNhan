@@ -15,26 +15,26 @@
 
 
 
-    <activity
+    <fragment
         android:id="@+id/nav_category"
-        android:name="com.example.personal_note.CategoryActivity"
+        android:name="com.example.personal_note.fragment.AddCategoryFragment"
         android:label="Danh mục"
-        tools:layout="@layout/activity_category" />
-    <activity
+        tools:layout="@layout/fragment_add_category" />
+    <fragment
         android:id="@+id/nav_priority"
-        android:name="com.example.personal_note.PriorityActivity"
+        android:name="com.example.personal_note.fragment.AddPriorityFragment"
         android:label="Mức độ ưu tiên"
-        tools:layout="@layout/activity_priority" />
-    <activity
+        tools:layout="@layout/fragment_add_priority" />
+    <fragment
         android:id="@+id/nav_status"
-        android:name="com.example.personal_note.StatusActivity"
+        android:name="com.example.personal_note.fragment.AddStatusFragment"
         android:label="Trạng thái"
-        tools:layout="@layout/activity_status" />
-    <activity
+        tools:layout="@layout/fragment_add_status" />
+    <fragment
         android:id="@+id/nav_note"
-        android:name="com.example.personal_note.NoteActivity"
+        android:name="com.example.personal_note.fragment.AddNoteFragment"
         android:label="Ghi chú"
-        tools:layout="@layout/activity_note" />
+        tools:layout="@layout/fragment_add_note" />
     <fragment
         android:id="@+id/nav_editProfile"
         android:name="com.example.personal_note.fragment.EditProfile"

@@ -34,14 +34,6 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-//        bai2 =(Button)findViewById(R.id.buttonBai3);
-//        bai2.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent bt2 = new Intent(CategoryActivity.this, HomeActivity.class);
-//                startActivity(bt2);
-//            }
-//        });
         button = findViewById(R.id.add);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
