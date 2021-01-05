@@ -22,7 +22,7 @@
         android:ems="10"
         android:layout_below="@id/textView"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Name" />
 
     <Button
         android:id="@+id/btnAdd"
