@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DBHelper extends SQLiteOpenHelper {
 
     //tao co so du lieu
-    private static final String DATABASE_NAME = "notePersonal_db";
+    private static final String DATABASE_NAME = "notePersonal.db";
     private static final String CATEGORY = "tbl_Category";
     private static final String PRIORITY = "tbl_Priority";
     private static final String STATUS = "tbl_Status";
@@ -26,11 +26,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //tao bang
 
-        String tbl_category = "CREATE TABLE " + CATEGORY + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT)";
-        String tbl_priority = "CREATE TABLE " + PRIORITY + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT)";
-        String tbl_status = "CREATE TABLE " + STATUS + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT)";
-        String tbl_note = "CREATE TABLE " + NOTE + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT, date TEXT)";
-        String tbl_user = "CREATE TABLE " + USER + "(id INTERGER PRIMARY KEY AUTOINCREMENT, userName TEXT,password TEXT, mail TEXT)";
+        String tbl_category = "CREATE TABLE " + CATEGORY + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT)";
+        String tbl_priority = "CREATE TABLE " + PRIORITY + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT)";
+        String tbl_status = "CREATE TABLE " + STATUS + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT)";
+        String tbl_note = "CREATE TABLE " + NOTE + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT,id_Category INTERGER, id_Status INTERGER, id_priority INTERGER ,FOREIGN KEY (id_Category) REFERENCES CARETGORY (id) ,FOREIGN KEY (id_Status) REFERENCES STATUS (id),FOREIGN KEY (id_Priority) REFERENCES PRIORIRY (id))";
+        String tbl_user = "CREATE TABLE " + USER + "(id INTERGER PRIMARY KEY AUTOINCREMENT, userName TEXT NOT NULL,password TEXT, mail TEXT)";
 
         db.execSQL(tbl_category);
         db.execSQL(tbl_priority);
@@ -89,13 +89,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     //Lay category
-    public ArrayList getCategory(){
+    public ArrayList getCategory() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList<String> arrayList = new ArrayList<>();
 
-        Cursor cursor =sqLiteDatabase.rawQuery("SELECT * FROM "+CATEGORY,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + CATEGORY, null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             arrayList.add(cursor.getString(cursor.getColumnIndex("category")));
             cursor.moveToNext();
         }
@@ -103,13 +103,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Lay priority
-    public ArrayList getPriority(){
+    public ArrayList getPriority() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList<String> arrayList = new ArrayList<>();
 
-        Cursor cursor =sqLiteDatabase.rawQuery("SELECT * FROM "+PRIORITY,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + PRIORITY, null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             arrayList.add(cursor.getString(cursor.getColumnIndex("priority")));
             cursor.moveToNext();
         }
@@ -117,13 +117,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Lay status
-    public ArrayList getStatus(){
+    public ArrayList getStatus() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList<String> arrayList = new ArrayList<>();
 
-        Cursor cursor =sqLiteDatabase.rawQuery("SELECT * FROM "+STATUS,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + STATUS, null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             arrayList.add(cursor.getString(cursor.getColumnIndex("status")));
             cursor.moveToNext();
         }
@@ -131,13 +131,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //Lay category
-    public ArrayList getNote(){
+    public ArrayList getNote() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         ArrayList<String> arrayList = new ArrayList<>();
 
-        Cursor cursor =sqLiteDatabase.rawQuery("SELECT * FROM "+NOTE,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + NOTE, null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
+        while (!cursor.isAfterLast()) {
             arrayList.add(cursor.getString(cursor.getColumnIndex("note")));
             cursor.moveToNext();
         }
