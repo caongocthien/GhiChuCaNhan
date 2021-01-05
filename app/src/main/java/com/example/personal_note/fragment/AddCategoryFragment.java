@@ -15,11 +15,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.personal_note.R;
+import com.example.personal_note.db.Category;
+import com.example.personal_note.db.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class AddCategoryFragment extends Fragment {
@@ -30,7 +36,8 @@ public class AddCategoryFragment extends Fragment {
     EditText edtName;
     ListView lvCategory;
     ArrayList arrayList;
-//    ArrayAdapter arrayAdapter;
+    ArrayAdapter arrayAdapter;
+    DatabaseHelper databaseHelper;
 
 
 
@@ -45,6 +52,8 @@ public class AddCategoryFragment extends Fragment {
         if (getArguments() != null) {
             //
         }
+
+        databaseHelper = new DatabaseHelper(getContext());
     }
 
     @Override
@@ -93,28 +102,28 @@ public class AddCategoryFragment extends Fragment {
         lvCategory = view.findViewById(R.id.lvCategory);
         edtName = dialog.findViewById(R.id.edtName);
 
-//
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String name = edtName.getText().toString();
-//                Date date = Calendar.getInstance().getTime();
-//                SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-//                String strdate = formatter.format(date);
-//
-//
-//                Category category = new Category(name, strdate);
-//
-//                if (dbHelper.insertCategory(category) > 0) {
-//                    arrayAdapter.clear();
-//                    arrayList.addAll(dbHelper.getCategory());
-//                    arrayAdapter.notifyDataSetChanged();
-//                    Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
-//                }
-//
-//
-//            }
-//        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = edtName.getText().toString();
+                Date date = Calendar.getInstance().getTime();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+                String strdate = formatter.format(date);
+
+
+                Category category = new Category(name, strdate);
+
+                if (databaseHelper.insertCategory(category)>0) {
+                    arrayAdapter.clear();
+                    arrayList.addAll(databaseHelper.getCategory());
+                    arrayAdapter.notifyDataSetChanged();
+                    Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
 
 
     }

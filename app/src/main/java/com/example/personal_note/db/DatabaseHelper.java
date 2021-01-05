@@ -1,11 +1,11 @@
 package com.example.personal_note.db;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import java.util.ArrayList;
 
 
 public class DatabaseHelper {
@@ -41,10 +41,6 @@ public class DatabaseHelper {
         String note = "create table if not exists tbl_note(id integer PRIMARY KEY autoincrement,name text,date text,id_User integer,id_Catagory integer,id_Status integer, id_priority integer ,FOREIGN KEY (id_Catagory) REFERENCES tbl_category (id) ,FOREIGN KEY (id_Status) REFERENCES tbl_status (id),FOREIGN KEY (id_priority) REFERENCES tbl_priority (id),FOREIGN KEY (id_User) REFERENCES tbl_user (id));";
         String user = "create table if not exists tbl_user(id integer PRIMARY KEY autoincrement,name text,email text, password text);";
 
-        //        String tbl_priority = "CREATE TABLE " + PRIORITY + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT)";
-//        String tbl_status = "CREATE TABLE " + STATUS + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT)";
-//        String tbl_note = "CREATE TABLE " + NOTE + "(id INTERGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, date TEXT,id_Category INTERGER, id_Status INTERGER, id_priority INTERGER ,FOREIGN KEY (id_Category) REFERENCES CARETGORY (id) ,FOREIGN KEY (id_Status) REFERENCES STATUS (id),FOREIGN KEY (id_Priority) REFERENCES PRIORIRY (id))";
-//        String tbl_user = "CREATE TABLE " + USER + "(id INTERGER PRIMARY KEY AUTOINCREMENT, userName TEXT NOT NULL,password TEXT, mail TEXT)";
 
         db.execSQL(category);
         db.execSQL(priority);
@@ -53,6 +49,44 @@ public class DatabaseHelper {
         db.execSQL(note);
         db.close();
     }
+
+
+    public ArrayList getCategory()
+    {
+        SQLiteDatabase db=openDB();
+        ArrayList<Category> arrayList=new ArrayList<>();
+
+        String sql="select * from tbl_category";
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor!=null) {
+
+
+            if (cursor.moveToNext()) {
+                do {
+                    String name = cursor.getString(1);
+                    String date = cursor.getString(2);
+                    arrayList.add(new Category(name, date));
+                }while (cursor.moveToNext());
+            }
+        }
+        db.close();
+        return  arrayList;
+    }
+
+
+    public long insertCategory(Category cate)
+    {
+        SQLiteDatabase db = openDB();
+        ContentValues category =new ContentValues();
+        category.put("name",cate.getNameCategory());
+        category.put("date",cate.getDate());
+        db.insert("tbl_category",null, category);
+       long status = db.insert("tbl_category",null,category);
+        db.close();
+        return status;
+    }
+
+
 
 
 }
