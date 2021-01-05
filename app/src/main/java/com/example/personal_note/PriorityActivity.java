@@ -18,56 +18,15 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PriorityActivity extends AppCompatActivity {
-    Button btnAdd, btnClose,bai2;
-    Dialog dialog;
-    FloatingActionButton button;
-    EditText edtName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_priority);
-//        bai2 =(Button)findViewById(R.id.buttonBai3);
-//        bai2.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent bt2 = new Intent(PriorityActivity.this, HomeActivity.class);
-//                startActivity(bt2);
-//            }
-//        });
-        button = findViewById(R.id.add);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.show();
-            }
-        });
-        add();
 
 
     }
 
-    public void add() {
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.priority_dialog_layout);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        dialog.setCancelable(false);
-        dialog.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
-        btnAdd = findViewById(R.id.btnAdd);
-        btnAdd = dialog.findViewById(R.id.btnAdd);
-        btnClose = dialog.findViewById(R.id.btnClose);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-    }
+
 }
