@@ -285,5 +285,13 @@ public class DatabaseHelper {
         else return true;
     }
 
+    //kiem tra dng nhap
+    public Boolean emailpassword(String email, String password){
+        SQLiteDatabase db = openDB();
+        String sqlcheck="select * from tbl_user where email=? and password=?";
+        Cursor cursor=db.rawQuery(sqlcheck,new String[]{email,password});
+        if(cursor.getCount()>0) return true;
+        else return false;
 
+    }
 }
