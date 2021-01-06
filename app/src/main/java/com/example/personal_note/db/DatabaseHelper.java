@@ -50,7 +50,7 @@ public class DatabaseHelper {
         db.close();
     }
 
-
+//Lay category
     public ArrayList getCategory()
     {
         SQLiteDatabase db=openDB();
@@ -74,6 +74,58 @@ public class DatabaseHelper {
     }
 
 
+
+    //Lay priority
+    public ArrayList getPriority()
+    {
+        SQLiteDatabase db=openDB();
+        ArrayList<Priority> arrayList=new ArrayList<>();
+
+        String sql="select * from tbl_priority";
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor!=null) {
+
+
+            if (cursor.moveToNext()) {
+                do {
+                    String name = cursor.getString(1);
+                    String date = cursor.getString(2);
+                    arrayList.add(new Priority(name, date));
+                }while (cursor.moveToNext());
+            }
+        }
+        db.close();
+        return  arrayList;
+    }
+
+    //Lay status
+    public ArrayList getStatus()
+    {
+        SQLiteDatabase db=openDB();
+        ArrayList<Status> arrayList=new ArrayList<>();
+
+        String sql="select * from tbl_status";
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor!=null) {
+
+
+            if (cursor.moveToNext()) {
+                do {
+                    String name = cursor.getString(1);
+                    String date = cursor.getString(2);
+                    arrayList.add(new Status(name, date));
+                }while (cursor.moveToNext());
+            }
+        }
+        db.close();
+        return  arrayList;
+    }
+
+
+
+
+
+//Them category
     public long insertCategory(Category cate)
     {
         SQLiteDatabase db = openDB();
@@ -84,6 +136,34 @@ public class DatabaseHelper {
        long status = db.insert("tbl_category",null,category);
         db.close();
         return status;
+    }
+
+
+    //Them Priority
+    public long insertPriority(Priority pri)
+    {
+        SQLiteDatabase db = openDB();
+        ContentValues priority =new ContentValues();
+        priority.put("name",pri.getNamePriority());
+        priority.put("date",pri.getDate());
+        db.insert("tbl_priority",null, priority);
+        long status = db.insert("tbl_priority",null,priority);
+        db.close();
+        return status;
+    }
+
+    //Them status
+
+    public long insertStatus(Status sta)
+    {
+        SQLiteDatabase db = openDB();
+        ContentValues status =new ContentValues();
+        status.put("name",sta.getNameStatus());
+        status.put("date",sta.getDate());
+        db.insert("tbl_status",null, status);
+        long status1 = db.insert("tbl_status",null,status);
+        db.close();
+        return status1;
     }
 
 
