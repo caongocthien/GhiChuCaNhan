@@ -270,6 +270,11 @@ public class DatabaseHelper {
     }
 
 
+    //get Note
+
+
+
+
 
     //check mail ton tai
     public Boolean chkemail(String email){

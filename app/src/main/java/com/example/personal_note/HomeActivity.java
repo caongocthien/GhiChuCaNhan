@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.personal_note.db.DatabaseHelper;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieData;
@@ -19,11 +21,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeActivity extends Fragment {
+    DatabaseHelper databaseHelper;
+
+
+
+
+
+
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home, container, false);
         PieChart pieChart = (PieChart) view.findViewById(R.id.pieChart);
         pieChart.setUsePercentValues(true);
+        databaseHelper =new DatabaseHelper(getContext());
+
+
+
 
         Description desc = new Description();
         desc.setText("Dashboard");
