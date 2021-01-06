@@ -58,9 +58,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 arrayAdapter.notifyDataSetChanged();
                                 Toast.makeText(SignUpActivity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
                             }
-
-                        }
-                    }
+                        }else Toast.makeText(getApplicationContext(),"Tai khoan da ton tai",Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(getApplicationContext(),"Mat khau khong khop",Toast.LENGTH_SHORT).show();
                 }
             }
         });
