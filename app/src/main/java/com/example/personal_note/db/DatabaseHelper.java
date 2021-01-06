@@ -236,6 +236,11 @@ public class DatabaseHelper {
     }
 
 
+    //get Note
+
+
+
+
 
 
 }
