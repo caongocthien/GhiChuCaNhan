@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.personal_note.R;
+import com.example.personal_note.adapter.CategoryAdapter;
+import com.example.personal_note.adapter.PriorityAdapter;
 import com.example.personal_note.db.Category;
 import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.Priority;
@@ -127,6 +129,14 @@ public class AddPriorityFragment extends Fragment {
 
             }
         });
+
+
+        ArrayList<Priority> priorityArrayList = databaseHelper.getPriority();
+        PriorityAdapter adapter = new PriorityAdapter( getContext(),priorityArrayList);
+        lvPriority = view.findViewById(R.id.lvPriority);
+        lvPriority.setAdapter(adapter);
+
+
 
 
 

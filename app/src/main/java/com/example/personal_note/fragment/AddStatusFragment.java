@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.personal_note.R;
+import com.example.personal_note.adapter.CategoryAdapter;
+import com.example.personal_note.adapter.StatusAdapter;
 import com.example.personal_note.db.Category;
 import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.Status;
@@ -80,7 +82,6 @@ public class AddStatusFragment extends Fragment {
 
 
         //them dialog
-
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.status_dialog_layout);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -130,5 +131,10 @@ public class AddStatusFragment extends Fragment {
 
             }
         });
+
+        ArrayList<Status> statusArrayList = databaseHelper.getStatus();
+        StatusAdapter adapter =new StatusAdapter(getContext(),statusArrayList);
+        lvStatus = view.findViewById(R.id.lvStatus);
+        lvStatus.setAdapter(adapter);
     }
 }

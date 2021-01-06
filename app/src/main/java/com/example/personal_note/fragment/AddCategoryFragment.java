@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.personal_note.R;
+import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.db.Category;
 import com.example.personal_note.db.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -124,6 +125,10 @@ public class AddCategoryFragment extends Fragment {
 
             }
         });
+        ArrayList<Category> categoryArrayList = databaseHelper.getCategory();
+        CategoryAdapter adapter =new CategoryAdapter(getContext(),categoryArrayList);
+        lvCategory = view.findViewById(R.id.lvCategory);
+        lvCategory.setAdapter(adapter);
 
 
     }
