@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -192,12 +193,19 @@ public class DatabaseHelper {
 
     //Xoa Category
 
-    public long deleteCategory(int id)
-    {
+//    public long deleteCategory(int id)
+//    {
+//        SQLiteDatabase db=openDB();
+//        long status=db.delete("tbl_category","id="+id,null);
+//        db.close();
+//        return status;
+//    }
+    public void delete(Category category){
         SQLiteDatabase db=openDB();
-        long status=db.delete("tbl_category","id="+id,null);
-        db.close();
-        return status;
+        long status=db.delete("tbl_category", " id = " + category.getIdCategory(), null);
+        if ( status> 0) {
+            Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Xoa Status
@@ -234,15 +242,20 @@ public class DatabaseHelper {
     }
 
     //Update Category
-    public long updateCategory(int id,Category newCate)
-    {
-        ContentValues categori=new ContentValues();
-        categori.put("name",newCate.getNameCategory());
-        categori.put("date",newCate.getDate());
+//    public long updateCategory(int id,Category newCate)
+//    {
+//        ContentValues categori=new ContentValues();
+//        categori.put("name",newCate.getNameCategory());
+//        categori.put("date",newCate.getDate());
+//        SQLiteDatabase db=openDB();
+//        long status=db.update("tbl_category",categori,"id=?",new String[]{String.valueOf(id)});
+//        db.close();
+//        return status;
+//    }
+    public void updateCategory(Category category){
         SQLiteDatabase db=openDB();
-        long status=db.update("tbl_category",categori,"id=?",new String[]{String.valueOf(id)});
-        db.close();
-        return status;
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("name",category.getNameCategory());
     }
 
     //Update Status

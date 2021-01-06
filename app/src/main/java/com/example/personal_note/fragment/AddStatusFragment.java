@@ -7,7 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -40,8 +42,6 @@ public class AddStatusFragment extends Fragment {
     ArrayList arrayList;
     ArrayAdapter arrayAdapter;
     DatabaseHelper databaseHelper;
-
-
 
     public AddStatusFragment() {
         // Required empty public constructor
@@ -136,5 +136,23 @@ public class AddStatusFragment extends Fragment {
         StatusAdapter adapter =new StatusAdapter(getContext(),statusArrayList);
         lvStatus = view.findViewById(R.id.lvStatus);
         lvStatus.setAdapter(adapter);
+        registerForContextMenu(lvStatus);
+    }
+    //context menu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getActivity().getMenuInflater().inflate(R.menu.contexts_menu, menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.edit:
+                Toast.makeText(getActivity(),"Text!",Toast.LENGTH_SHORT).show();
+            case R.id.delete:
+                Toast.makeText(getActivity(),"Text!",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

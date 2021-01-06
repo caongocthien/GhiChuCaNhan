@@ -61,9 +61,9 @@
             android:id="@+id/bntsignin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="left"
             android:text="Sign in"
-            android:layout_marginLeft="200dp"
+            android:layout_marginLeft="180dp"
             />
     </LinearLayout>
 

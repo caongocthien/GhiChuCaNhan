@@ -17,8 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends ArrayAdapter<Category> {
+    Context context;
+    ArrayList<Category> arrayList;
     public CategoryAdapter(@NonNull Context context, ArrayList<Category> categories) {
         super(context, 0, categories);
+        this.context= context;
+        this.arrayList= categories;
+
     }
 
     @NonNull
@@ -30,8 +35,8 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
             TextView tvName = convertView.findViewById(R.id.tvNameCategory);
             TextView tvDate = convertView.findViewById(R.id.tvDateCategory);
 
-            tvName.setText(category.getNameCategory());
-            tvDate.setText(category.getDate());
+            tvName.setText(arrayList.get(position).getNameCategory());
+            tvDate.setText(arrayList.get(position).getDate());
         }
         return convertView;
     }

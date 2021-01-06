@@ -23,23 +23,12 @@ import java.util.List;
 public class HomeActivity extends Fragment {
     DatabaseHelper databaseHelper;
 
-
-
-
-
-
-
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home, container, false);
         PieChart pieChart = (PieChart) view.findViewById(R.id.pieChart);
         pieChart.setUsePercentValues(true);
         databaseHelper =new DatabaseHelper(getContext());
-
-
-
 
         Description desc = new Description();
         desc.setText("Dashboard");
