@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -164,6 +166,73 @@ public class DatabaseHelper {
         long status1 = db.insert("tbl_status",null,status);
         db.close();
         return status1;
+    }
+
+    //Xoa Category
+
+    public long deleteCategory(int id)
+    {
+        SQLiteDatabase db=openDB();
+        long status=db.delete("tbl_category","id="+id,null);
+        db.close();
+        return status;
+    }
+
+    //Xoa Status
+
+    public long deleteStatus(int id)
+    {
+        SQLiteDatabase db=openDB();
+        long status=db.delete("tbl_status","id="+id,null);
+        db.close();
+        return status;
+    }
+
+    //Xoa Priority
+
+    public long deletePriority(int id)
+    {
+        SQLiteDatabase db=openDB();
+        long status=db.delete("tbl_Priority","id="+id,null);
+        db.close();
+        return status;
+    }
+
+
+    //Update Category
+    public long updateCategory(int id,Category newCate)
+    {
+        ContentValues categori=new ContentValues();
+        categori.put("name",newCate.getNameCategory());
+        categori.put("date",newCate.getDate());
+        SQLiteDatabase db=openDB();
+        long status=db.update("tbl_category",categori,"id=?",new String[]{String.valueOf(id)});
+        db.close();
+        return status;
+    }
+
+    //Update Status
+    public long updateStatus(int id,Status newSta)
+    {
+        ContentValues status =new ContentValues();
+        status.put("name",newSta.getNameStatus());
+        status.put("date",newSta.getDate());
+        SQLiteDatabase db=openDB();
+        long status1=db.update("tbl_status",status,"id=?",new String[]{String.valueOf(id)});
+        db.close();
+        return status1;
+    }
+
+    //Update Status
+    public long updatePriority(int id,Priority newPri)
+    {
+        ContentValues priority =new ContentValues();
+        priority.put("name",newPri.getNamePriority());
+        priority.put("date",newPri.getDate());
+        SQLiteDatabase db=openDB();
+        long status =db.update("tbl_priority",priority,"id=?",new String[]{String.valueOf(id)});
+        db.close();
+        return status;
     }
 
 
