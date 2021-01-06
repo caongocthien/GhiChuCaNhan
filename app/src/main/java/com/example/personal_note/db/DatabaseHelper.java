@@ -41,7 +41,7 @@ public class DatabaseHelper {
         String status = "create table if not exists tbl_status(id integer PRIMARY KEY autoincrement,name text,date text);";
         String priority = "create table if not exists tbl_priority(id integer PRIMARY KEY autoincrement,name text,date text);";
         String note = "create table if not exists tbl_note(id integer PRIMARY KEY autoincrement,name text,date text,id_User integer,id_Catagory integer,id_Status integer, id_priority integer ,FOREIGN KEY (id_Catagory) REFERENCES tbl_category (id) ,FOREIGN KEY (id_Status) REFERENCES tbl_status (id),FOREIGN KEY (id_priority) REFERENCES tbl_priority (id),FOREIGN KEY (id_User) REFERENCES tbl_user (id));";
-        String user = "create table if not exists tbl_user(id integer PRIMARY KEY autoincrement,name text,email text, password text);";
+        String user = "create table if not exists tbl_user(id integer PRIMARY KEY autoincrement,email text, password text);";
 
 
         db.execSQL(category);
@@ -116,6 +116,28 @@ public class DatabaseHelper {
                     String name = cursor.getString(1);
                     String date = cursor.getString(2);
                     arrayList.add(new Status(name, date));
+                }while (cursor.moveToNext());
+            }
+        }
+        db.close();
+        return  arrayList;
+    }
+    //get user
+    public ArrayList getUser()
+    {
+        SQLiteDatabase db=openDB();
+        ArrayList<User> arrayList=new ArrayList<>();
+
+        String sql="select * from tbl_user";
+        Cursor cursor=db.rawQuery(sql,null);
+        if(cursor!=null) {
+
+
+            if (cursor.moveToNext()) {
+                do {
+                    String email = cursor.getString(1);
+                    String password = cursor.getString(2);
+                    arrayList.add(new User(email,password));
                 }while (cursor.moveToNext());
             }
         }
@@ -198,6 +220,18 @@ public class DatabaseHelper {
         return status;
     }
 
+    //them user
+    public long insertUser(User uesr)
+    {
+        SQLiteDatabase db = openDB();
+        ContentValues user =new ContentValues();
+        user.put("email",uesr.getEmailUser());
+        user.put("password",uesr.getPasswordUser());
+        db.insert("tbl_user",null, user);
+        long adduser = db.insert("tbl_user",null,user);
+        db.close();
+        return adduser;
+    }
 
     //Update Category
     public long updateCategory(int id,Category newCate)
@@ -241,6 +275,15 @@ public class DatabaseHelper {
 
 
 
+
+    //check mail ton tai
+    public Boolean chkemail(String email){
+        SQLiteDatabase db = openDB();
+        String sqlemail="select * from tbl_user where email=?";
+        Cursor cursor=db.rawQuery(sqlemail,new String[]{email});
+        if(cursor.getCount()>0) return false;
+        else return true;
+    }
 
 
 }
