@@ -11,13 +11,11 @@
         android:theme="@style/Theme.Personal_note">
         <activity android:name=".SignUpActivity">
 
-
         </activity>
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/Theme.Personal_note.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
