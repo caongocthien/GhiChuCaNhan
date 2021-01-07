@@ -152,11 +152,13 @@ public class AddCategoryFragment extends Fragment {
 
 
     public boolean onContextItemSelected(MenuItem item) {
-        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int id = item.getItemId();
-        switch (id) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int pos=info.position;
+        Category category=categoryArrayList.get(pos);
+        int idCategory=category.getIdCategory();
+        switch (item.getItemId()) {
             case R.id.edit:
-                final Category category = categoryArrayList.get(info.position);
+             //   final Category category = categoryArrayList.get(info.position);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 builder.setTitle("Cập nhật category");
@@ -186,8 +188,6 @@ public class AddCategoryFragment extends Fragment {
                 break;
             //delete category
             case R.id.delete:
-                final Category category1 = categoryArrayList.get(info.position);
-                int idCategory=category1.getIdCategory();
                 AlertDialog.Builder builder1= new AlertDialog.Builder(getContext());
                 builder1.setTitle("Delete");
                 builder1.setCancelable(false);
@@ -200,7 +200,9 @@ public class AddCategoryFragment extends Fragment {
                             adapter.clear();
                             categoryArrayList.addAll(databaseHelper.getCategory());
                             adapter.notifyDataSetChanged();
+
                         }
+                        Toast.makeText(getContext(), idCategory+"", Toast.LENGTH_SHORT).show();
                     }
                 });
 

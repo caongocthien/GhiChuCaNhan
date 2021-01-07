@@ -58,9 +58,10 @@ public class DatabaseHelper {
         Cursor cursor = db.rawQuery(sql, null);
 
         while (cursor.moveToNext()) {
+            int id=cursor.getInt(0);
             String name = cursor.getString(1);
             String date = cursor.getString(2);
-            arrayList.add(new Category(name, date));
+            arrayList.add(new Category(id,name, date));
         }
 
         db.close();
