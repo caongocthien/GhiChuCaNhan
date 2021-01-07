@@ -65,7 +65,9 @@ public class SignUpActivity extends AppCompatActivity {
                                 arrayAdapter.clear();
                                 arrayList.addAll(databaseHelper.getUser());
                                 arrayAdapter.notifyDataSetChanged();
-                                Toast.makeText(SignUpActivity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(SignUpActivity.this,LogInActivity.class);
+                                startActivity(i);
+                                //Toast.makeText(SignUpActivity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
                             }
                         }else Toast.makeText(getApplicationContext(),"Tai khoan da ton tai",Toast.LENGTH_SHORT).show();
                     } else Toast.makeText(getApplicationContext(),"Mat khau khong khop",Toast.LENGTH_SHORT).show();
