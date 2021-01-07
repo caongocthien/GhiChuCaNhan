@@ -158,21 +158,32 @@ public class AddCategoryFragment extends Fragment {
         int idCategory=category.getIdCategory();
         switch (item.getItemId()) {
             case R.id.edit:
-             //   final Category category = categoryArrayList.get(info.position);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
                 builder.setTitle("Cập nhật category");
                 builder.setCancelable(false);
                 LayoutInflater inflater = LayoutInflater.from(getContext());
-                View view = inflater.inflate(R.layout.fragment_add_category,null);
+                View view = inflater.inflate(R.layout.category_dialog_layout,null);
 
-                final EditText edtName =( EditText)view.findViewById(R.id.edtName);
+                EditText edtName =(EditText)view.findViewById(R.id.edtName);
+
+                Date date = Calendar.getInstance().getTime();
 
 
                 builder.setView(view);
                 builder.setPositiveButton("Cập nhập", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        String name=edtName.getText().toString();
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+                        String strdate = formatter.format(date);
+                        Category newCa=new Category(name,strdate);
+                        if( databaseHelper.updateCategory(idCategory,newCa)>0)
+                        {
+                            adapter.clear();
+                            categoryArrayList.addAll(databaseHelper.getCategory());
+                            adapter.notifyDataSetChanged();
+                        }
 
                     }
                 });
@@ -218,4 +229,5 @@ public class AddCategoryFragment extends Fragment {
         }
         return super.onContextItemSelected(item);
     }
+    // end context menu
 }
