@@ -74,7 +74,7 @@ public class AddPriorityFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        priorityArrayList = databaseHelper.getPriority();
+       priorityArrayList = databaseHelper.getPriority();
         adapter = new PriorityAdapter(getContext(), priorityArrayList);
         lvPriority = view.findViewById(R.id.lvPriority);
         lvPriority.setAdapter(adapter);
@@ -109,8 +109,6 @@ public class AddPriorityFragment extends Fragment {
 
 
         //Them gia tri vao mang
-        lvPriority = view.findViewById(R.id.lvPriority);
-        edtName = dialog.findViewById(R.id.edtName);
 
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -128,8 +126,9 @@ public class AddPriorityFragment extends Fragment {
                     adapter.clear();
                     priorityArrayList.addAll(databaseHelper.getPriority());
                     adapter.notifyDataSetChanged();
-                    Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+
                 }
+                Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
 
 

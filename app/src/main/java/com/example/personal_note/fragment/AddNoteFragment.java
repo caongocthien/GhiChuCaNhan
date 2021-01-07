@@ -11,11 +11,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.personal_note.R;
+import com.example.personal_note.adapter.CategoryAdapter;
+import com.example.personal_note.adapter.PriorityAdapter;
+import com.example.personal_note.adapter.StatusAdapter;
+import com.example.personal_note.db.Category;
+import com.example.personal_note.db.DatabaseHelper;
+import com.example.personal_note.db.Priority;
+import com.example.personal_note.db.Status;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class AddNoteFragment extends Fragment {
 
@@ -23,6 +34,17 @@ public class AddNoteFragment extends Fragment {
     Dialog dialog;
     FloatingActionButton button;
     EditText edtName;
+    Spinner spnCat, spnSta,spnPri;
+
+    DatabaseHelper databaseHelper;
+    ArrayAdapter<Category> adapterCat;
+    ArrayList<Category> categoryArrayList;
+
+    ArrayAdapter<Priority> adapterPri;
+    ArrayList<Priority> priorityArrayList;
+
+    ArrayAdapter<Status> adapterSta;
+    ArrayList<Status> statusArrayList;
 
 
 
@@ -36,9 +58,8 @@ public class AddNoteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            //
-        }
+
+        databaseHelper = new DatabaseHelper(getContext());
     }
 
     @Override
@@ -51,6 +72,17 @@ public class AddNoteFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //khoi tao
+        categoryArrayList = databaseHelper.getCategory();
+        adapterCat = new CategoryAdapter(getContext(), categoryArrayList);
+
+        statusArrayList = databaseHelper.getStatus();
+        adapterSta = new StatusAdapter(getContext(), statusArrayList);
+
+        priorityArrayList = databaseHelper.getPriority();
+        adapterPri= new PriorityAdapter(getContext(), priorityArrayList);
+
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -73,12 +105,32 @@ public class AddNoteFragment extends Fragment {
         btnClose = dialog.findViewById(R.id.btnClose);
         edtName = dialog.findViewById(R.id.edtName);
 
+
+
+        //spinner
+        spnCat = dialog.findViewById(R.id.spnCategory);
+        spnPri = dialog.findViewById(R.id.spnPriority);
+        spnSta = dialog.findViewById(R.id.spnStatus);
+
+    //set adapter
+        spnCat.setAdapter(adapterCat);
+        spnPri.setAdapter(adapterPri);
+        spnSta.setAdapter(adapterSta);
+
+
+
+
+
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
+
+
+
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

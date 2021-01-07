@@ -25,7 +25,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.personal_note.HomeActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.db.Category;
@@ -39,6 +38,7 @@ import java.util.Date;
 
 
 public class AddCategoryFragment extends Fragment {
+
     Button btnAdd, btnClose;
     Dialog dialog;
     FloatingActionButton button;
@@ -78,9 +78,6 @@ public class AddCategoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         categoryArrayList = databaseHelper.getCategory();
         adapter = new CategoryAdapter(getContext(), categoryArrayList);
-        lvCategory = view.findViewById(R.id.lvCategory);
-        lvCategory.setAdapter(adapter);
-        registerForContextMenu(lvCategory);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -132,12 +129,17 @@ public class AddCategoryFragment extends Fragment {
                     categoryArrayList.addAll(databaseHelper.getCategory());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+
                 }
                 dialog.dismiss();
+
+
             }
         });
 
-
+        lvCategory = view.findViewById(R.id.lvCategory);
+        lvCategory.setAdapter(adapter);
+        registerForContextMenu(lvCategory);
     }
 
     //context menu
@@ -155,32 +157,22 @@ public class AddCategoryFragment extends Fragment {
         int idCategory=category.getIdCategory();
         switch (item.getItemId()) {
             case R.id.edit:
+             //   final Category category = categoryArrayList.get(info.position);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                builder.setTitle("Cập nhật nội dung");
+                builder.setTitle("Cập nhật category");
                 builder.setCancelable(false);
                 LayoutInflater inflater = LayoutInflater.from(getContext());
-                View view = inflater.inflate(R.layout.fragment_update_category,null);
+                View view = inflater.inflate(R.layout.fragment_add_category,null);
 
-                EditText edtName =(EditText)view.findViewById(R.id.edtName);
+                final EditText edtName =( EditText)view.findViewById(R.id.edtName);
 
-                Date date = Calendar.getInstance().getTime();
 
                 builder.setView(view);
                 builder.setPositiveButton("Cập nhập", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        String name=edtName.getText().toString();
-                        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-                        String strdate = formatter.format(date);
-                        Category newCa=new Category(name,strdate);
-                        if( databaseHelper.updateCategory(idCategory,newCa)>0)
-                        {
-                            adapter.clear();
-                            categoryArrayList.addAll(databaseHelper.getCategory());
-                            adapter.notifyDataSetChanged();
-                            Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                        }
+
                     }
                 });
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
@@ -207,8 +199,9 @@ public class AddCategoryFragment extends Fragment {
                             adapter.clear();
                             categoryArrayList.addAll(databaseHelper.getCategory());
                             adapter.notifyDataSetChanged();
+
                         }
-                        Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), idCategory+"", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -224,5 +217,4 @@ public class AddCategoryFragment extends Fragment {
         }
         return super.onContextItemSelected(item);
     }
-    // end context menu
 }
