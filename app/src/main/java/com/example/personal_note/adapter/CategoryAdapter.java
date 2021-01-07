@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends ArrayAdapter<Category> {
+
     public CategoryAdapter(@NonNull Context context, ArrayList<Category> categories) {
         super(context, 0, categories);
     }

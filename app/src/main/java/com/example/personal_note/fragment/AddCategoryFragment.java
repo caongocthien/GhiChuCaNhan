@@ -1,13 +1,16 @@
 package com.example.personal_note.fragment;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -17,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.personal_note.HomeActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.db.Category;
@@ -36,9 +40,9 @@ public class AddCategoryFragment extends Fragment {
     FloatingActionButton button;
     EditText edtName;
     ListView lvCategory;
-    ArrayList arrayList;
-    ArrayAdapter arrayAdapter;
     DatabaseHelper databaseHelper;
+    ArrayList<Category> categoryArrayList;
+    CategoryAdapter adapter;
 
 
 
@@ -69,6 +73,8 @@ public class AddCategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        categoryArrayList = databaseHelper.getCategory();
+        adapter =new CategoryAdapter(getContext(),categoryArrayList);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -116,17 +122,19 @@ public class AddCategoryFragment extends Fragment {
                 Category category = new Category(name, strdate);
 
                 if (databaseHelper.insertCategory(category)>0) {
-                    arrayAdapter.clear();
-                    arrayList.addAll(databaseHelper.getCategory());
-                    arrayAdapter.notifyDataSetChanged();
+                    adapter.clear();
+                    categoryArrayList.addAll(databaseHelper.getCategory());
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+
                 }
+                dialog.dismiss();
+
 
 
             }
         });
-        ArrayList<Category> categoryArrayList = databaseHelper.getCategory();
-        CategoryAdapter adapter =new CategoryAdapter(getContext(),categoryArrayList);
+
         lvCategory = view.findViewById(R.id.lvCategory);
         lvCategory.setAdapter(adapter);
 
