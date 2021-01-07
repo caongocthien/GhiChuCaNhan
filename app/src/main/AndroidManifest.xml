@@ -9,26 +9,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Personal_note">
+        <activity android:name=".LogInActivity"></activity>
         <activity android:name=".SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+<<<<<<< HEAD
+=======
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+>>>>>>> bfcbd805e2074ee8b19a5df30cc8afc6b689251f
         </activity>
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation"
             android:theme="@style/Theme.Personal_note.NoActionBar">
+<<<<<<< HEAD
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+=======
+>>>>>>> bfcbd805e2074ee8b19a5df30cc8afc6b689251f
 
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".CategoryActivity"></activity>
+        <activity android:name=".HomeActivity" >
+        </activity>
+        <activity android:name=".CategoryActivity" />
         <activity android:name=".NoteActivity" />
         <activity android:name=".StatusActivity" />
         <activity android:name=".PriorityActivity" />
