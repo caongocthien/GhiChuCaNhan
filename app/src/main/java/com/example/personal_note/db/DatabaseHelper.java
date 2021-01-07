@@ -41,7 +41,7 @@ public class DatabaseHelper {
         String status = "create table if not exists tbl_status(id integer PRIMARY KEY autoincrement,name text,date text);";
         String priority = "create table if not exists tbl_priority(id integer PRIMARY KEY autoincrement,name text,date text);";
         String note = "create table if not exists tbl_note(id integer PRIMARY KEY autoincrement,name text,date text,id_User integer,id_Catagory integer,id_Status integer, id_priority integer ,FOREIGN KEY (id_Catagory) REFERENCES tbl_category (id) ,FOREIGN KEY (id_Status) REFERENCES tbl_status (id),FOREIGN KEY (id_priority) REFERENCES tbl_priority (id),FOREIGN KEY (id_User) REFERENCES tbl_user (id));";
-        String user = "create table if not exists tbl_user(id integer PRIMARY KEY autoincrement,email text, password text);";
+        String user = "create table if not exists tbl_user(id integer PRIMARY KEY autoincrement, firstname text, lastname text,email text, password text);";
         db.execSQL(category);
         db.execSQL(priority);
         db.execSQL(status);
@@ -118,8 +118,10 @@ public class DatabaseHelper {
 
 
             while (cursor.moveToNext()) {
-                String email = cursor.getString(1);
-                String password = cursor.getString(2);
+                String firstname = cursor.getString(1);
+                String lastname = cursor.getString(2);
+                String email = cursor.getString(3);
+                String password = cursor.getString(4);
                 arrayList.add(new User(email, password));
             }
         }

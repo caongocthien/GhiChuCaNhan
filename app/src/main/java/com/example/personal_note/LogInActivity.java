@@ -13,7 +13,7 @@ import com.example.personal_note.db.DatabaseHelper;
 
 public class LogInActivity extends AppCompatActivity {
     EditText e1,e2;
-    Button b1;
+    Button b1,b2;
     DatabaseHelper db;
 
     @Override
@@ -34,7 +34,16 @@ public class LogInActivity extends AppCompatActivity {
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"Dang nhap thanh cong",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Xin chao " + email ,Toast.LENGTH_LONG).show();
                 }else Toast.makeText(getApplicationContext(),"Dang nhap that bai, kiem tra lai",Toast.LENGTH_SHORT).show();
+            }
+        });
+        b2 = (Button)findViewById(R.id.btnExit);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LogInActivity.this,SignUpActivity.class);
+                startActivity(i);
             }
         });
     }

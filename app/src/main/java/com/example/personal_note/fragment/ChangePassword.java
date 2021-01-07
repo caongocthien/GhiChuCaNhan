@@ -16,7 +16,7 @@ import com.example.personal_note.HomeActivity;
 import com.example.personal_note.NavigationActivity;
 import com.example.personal_note.R;
 
-public class Changepassword extends Fragment {
+public class ChangePassword extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class Changepassword extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button btnHome =view.findViewById(R.id.bntHome);
+        Button btnHome =view.findViewById(R.id.btnHome);
             btnHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
