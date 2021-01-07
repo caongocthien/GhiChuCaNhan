@@ -19,7 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddNoteFragment extends Fragment {
 
-    Button btnAdd, btnClose,bai2;
+    Button btnAdd, btnClose;
     Dialog dialog;
     FloatingActionButton button;
     EditText edtName;

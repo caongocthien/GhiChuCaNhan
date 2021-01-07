@@ -3,6 +3,7 @@ package com.example.personal_note;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,7 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     EditText e1,e2,e3;
-    Button b1;
+    Button b1,b2;
     DatabaseHelper databaseHelper;
     ArrayList arrayList;
     ArrayAdapter arrayAdapter;
@@ -37,6 +38,14 @@ public class SignUpActivity extends AppCompatActivity {
         e2 = (EditText)findViewById(R.id.edittextpassword);
         e3 = (EditText)findViewById(R.id.edittextconfirmpassword);
         b1 = (Button)findViewById(R.id.bntsignup);
+        b2 = (Button)findViewById(R.id.bntsignin);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignUpActivity.this,LogInActivity.class);
+                startActivity(i);
+            }
+        });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,9 +67,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 arrayAdapter.notifyDataSetChanged();
                                 Toast.makeText(SignUpActivity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
                             }
-
-                        }
-                    }
+                        }else Toast.makeText(getApplicationContext(),"Tai khoan da ton tai",Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(getApplicationContext(),"Mat khau khong khop",Toast.LENGTH_SHORT).show();
                 }
             }
         });
