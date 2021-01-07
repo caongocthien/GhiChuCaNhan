@@ -3,6 +3,7 @@ package com.example.personal_note;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.example.personal_note.db.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,8 +18,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class NavigationActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
 
+public class NavigationActivity extends AppCompatActivity {
+    TextView t1;
     private AppBarConfiguration mAppBarConfiguration;
     DatabaseHelper databaseHelper;
     @Override
