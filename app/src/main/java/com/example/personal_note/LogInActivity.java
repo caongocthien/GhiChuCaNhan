@@ -31,7 +31,7 @@ public class LogInActivity extends AppCompatActivity {
                 String password = e2.getText().toString();
                 Boolean Chkemailpassword = db.emailpassword(email,password);
                 if (Chkemailpassword==true){
-                    Intent i = new Intent(LogInActivity.this,MainActivity.class);
+                    Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"Dang nhap thanh cong",Toast.LENGTH_SHORT).show();
                 }else Toast.makeText(getApplicationContext(),"Dang nhap that bai, kiem tra lai",Toast.LENGTH_SHORT).show();
