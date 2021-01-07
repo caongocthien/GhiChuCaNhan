@@ -37,17 +37,4 @@ public class PriorityAdapter extends ArrayAdapter<Priority> {
         return convertView;
     }
 
-    @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Priority priority = getItem(position);
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.priotity_layout, parent, false);
-            TextView tvName = convertView.findViewById(R.id.tvNamePriority);
-            TextView tvDate = convertView.findViewById(R.id.tvDataPriotity);
-
-            tvName.setText(priority.getNamePriority());
-            tvDate.setText(priority.getDate());
-        }
-        return convertView;
-    }
 }

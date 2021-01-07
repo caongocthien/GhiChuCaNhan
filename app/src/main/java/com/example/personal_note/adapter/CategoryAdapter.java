@@ -36,17 +36,4 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         }
         return convertView;
     }
-
-    @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-        Category category = getItem(position);
-        if (convertView ==null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.category_layout,parent,false);
-            TextView tvName = convertView.findViewById(R.id.tvNameCategory);
-            tvName.setText(category.getNameCategory());
-        }
-        return convertView;
-
-    }
 }

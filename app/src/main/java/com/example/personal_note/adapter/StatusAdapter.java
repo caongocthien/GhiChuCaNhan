@@ -37,18 +37,4 @@ public class StatusAdapter extends ArrayAdapter<Status> {
         }
         return convertView;
     }
-
-    @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        Status status = getItem(position);
-        if (convertView ==null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.status_layout,parent,false);
-            TextView tvName = convertView.findViewById(R.id.tvNameStatus);
-            TextView tvDate = convertView.findViewById(R.id.tvDateStatus);
-
-            tvName.setText(status.getNameStatus());
-            tvDate.setText(status.getDate());
-        }
-        return convertView;
-    }
 }
