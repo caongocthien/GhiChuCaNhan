@@ -39,9 +39,9 @@ public class AddStatusFragment extends Fragment {
     FloatingActionButton button;
     EditText edtName;
     ListView lvStatus;
-    ArrayList arrayList;
-    ArrayAdapter arrayAdapter;
     DatabaseHelper databaseHelper;
+    ArrayList<Status> statusArrayList;
+    StatusAdapter adapter;
 
     public AddStatusFragment() {
         // Required empty public constructor
@@ -55,7 +55,6 @@ public class AddStatusFragment extends Fragment {
         if (getArguments() != null) {
             //
         }
-
         databaseHelper = new DatabaseHelper(getContext());
     }
 
@@ -69,6 +68,8 @@ public class AddStatusFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        statusArrayList = databaseHelper.getStatus();
+        adapter =new StatusAdapter(getContext(),statusArrayList);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -76,12 +77,12 @@ public class AddStatusFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dialog.show();
+                //Toast.makeText(getContext(), "thien", Toast.LENGTH_SHORT).show();
             }
         });
 
 
-
-        //them dialog
+        //Hien dialog
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.status_dialog_layout);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -89,13 +90,8 @@ public class AddStatusFragment extends Fragment {
         dialog.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
         btnAdd = dialog.findViewById(R.id.btnAdd);
         btnClose = dialog.findViewById(R.id.btnClose);
-        edtName = dialog.findViewById(R.id.edtName);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+
+
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,19 +117,19 @@ public class AddStatusFragment extends Fragment {
                 Status status = new Status(name, strdate);
 
                 if (databaseHelper.insertStatus(status)>0) {
-                    arrayAdapter.clear();
-                    arrayList.addAll(databaseHelper.getStatus());
-                    arrayAdapter.notifyDataSetChanged();
+                    adapter.clear();
+                    statusArrayList.addAll(databaseHelper.getStatus());
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
+
                 }
+                dialog.dismiss();
+
 
 
             }
         });
 
-        ArrayList<Status> statusArrayList = databaseHelper.getStatus();
-        StatusAdapter adapter =new StatusAdapter(getContext(),statusArrayList);
         lvStatus = view.findViewById(R.id.lvStatus);
         lvStatus.setAdapter(adapter);
         registerForContextMenu(lvStatus);

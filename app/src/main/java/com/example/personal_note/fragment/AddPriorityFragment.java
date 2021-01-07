@@ -35,20 +35,19 @@ import java.util.Date;
 
 public class AddPriorityFragment extends Fragment {
 
-    Button btnAdd, btnClose,bai2;
+    Button btnAdd, btnClose, bai2;
     Dialog dialog;
     FloatingActionButton button;
     EditText edtName;
     ListView lvPriority;
-    ArrayList arrayList;
-    ArrayAdapter arrayAdapter;
+    ArrayList<Priority> priorityArrayList;
     DatabaseHelper databaseHelper;
+    PriorityAdapter adapter;
 
 
     public AddPriorityFragment() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -59,6 +58,7 @@ public class AddPriorityFragment extends Fragment {
         }
 
         databaseHelper = new DatabaseHelper(getContext());
+
     }
 
     @Override
@@ -71,6 +71,8 @@ public class AddPriorityFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        priorityArrayList = databaseHelper.getPriority();
+        adapter = new PriorityAdapter(getContext(), priorityArrayList);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -91,12 +93,7 @@ public class AddPriorityFragment extends Fragment {
         edtName = dialog.findViewById(R.id.edtName);
         btnAdd = dialog.findViewById(R.id.btnAdd);
         btnClose = dialog.findViewById(R.id.btnClose);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,20 +118,19 @@ public class AddPriorityFragment extends Fragment {
 
                 Priority priority = new Priority(name, strdate);
 
-                if (databaseHelper.insertPriority(priority)>0) {
-                    arrayAdapter.clear();
-                    arrayList.addAll(databaseHelper.getPriority());
-                    arrayAdapter.notifyDataSetChanged();
+                if (databaseHelper.insertPriority(priority) > 0) {
+                    adapter.clear();
+                    priorityArrayList.addAll(databaseHelper.getPriority());
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
                 }
+                dialog.dismiss();
 
 
             }
         });
 
 
-        ArrayList<Priority> priorityArrayList = databaseHelper.getPriority();
-        PriorityAdapter adapter = new PriorityAdapter( getContext(),priorityArrayList);
         lvPriority = view.findViewById(R.id.lvPriority);
         lvPriority.setAdapter(adapter);
 

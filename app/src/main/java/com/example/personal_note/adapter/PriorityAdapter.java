@@ -16,8 +16,7 @@ import com.example.personal_note.db.Priority;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PriorityAdapter extends ArrayAdapter<Priority>
-{
+public class PriorityAdapter extends ArrayAdapter<Priority> {
 
     public PriorityAdapter(@NonNull Context context, ArrayList<Priority> priorities) {
         super(context, 0, priorities);
@@ -27,8 +26,8 @@ public class PriorityAdapter extends ArrayAdapter<Priority>
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Priority priority = getItem(position);
-        if (convertView ==null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.priotity_layout,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.priotity_layout, parent, false);
             TextView tvName = convertView.findViewById(R.id.tvNamePriority);
             TextView tvDate = convertView.findViewById(R.id.tvDataPriotity);
 
@@ -38,13 +37,4 @@ public class PriorityAdapter extends ArrayAdapter<Priority>
         return convertView;
     }
 
-//
-//    @NonNull
-//    @Override
-//    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//
-//
-//        Priority priority = (Priority) getItem(position);
-//        return super.getView(position, convertView, parent);
-//    }
 }

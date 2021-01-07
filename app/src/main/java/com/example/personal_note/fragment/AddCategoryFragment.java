@@ -1,8 +1,7 @@
 package com.example.personal_note.fragment;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,19 +10,17 @@ import androidx.fragment.app.Fragment;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.personal_note.HomeActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.db.Category;
@@ -43,9 +40,11 @@ public class AddCategoryFragment extends Fragment {
     FloatingActionButton button;
     EditText edtName;
     ListView lvCategory;
-    ArrayList<Category> arrayList;
-    ArrayAdapter arrayAdapter;
     DatabaseHelper databaseHelper;
+    ArrayList<Category> categoryArrayList;
+    CategoryAdapter adapter;
+
+
 
     public AddCategoryFragment() {
         // Required empty public constructor
@@ -60,8 +59,6 @@ public class AddCategoryFragment extends Fragment {
         }
 
         databaseHelper = new DatabaseHelper(getContext());
-        arrayList =databaseHelper.getCategory();
-
     }
 
     @Override
@@ -76,7 +73,8 @@ public class AddCategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        categoryArrayList = databaseHelper.getCategory();
+        adapter =new CategoryAdapter(getContext(),categoryArrayList);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -124,99 +122,24 @@ public class AddCategoryFragment extends Fragment {
                 Category category = new Category(name, strdate);
 
                 if (databaseHelper.insertCategory(category)>0) {
-                    arrayAdapter.clear();
-                    arrayList.addAll(databaseHelper.getCategory());
-                    arrayAdapter.notifyDataSetChanged();
+                    adapter.clear();
+                    categoryArrayList.addAll(databaseHelper.getCategory());
+                    adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+
                 }
+                dialog.dismiss();
+
 
 
             }
         });
-        ArrayList<Category> categoryArrayList = databaseHelper.getCategory();
-        CategoryAdapter adapter =new CategoryAdapter(getContext(),categoryArrayList);
+
         lvCategory = view.findViewById(R.id.lvCategory);
         lvCategory.setAdapter(adapter);
-        registerForContextMenu(lvCategory);
+
 
     }
 
-    //context menu
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        getActivity().getMenuInflater().inflate(R.menu.contexts_menu, menu);
-    }
-
-    public boolean onContextItemSelected(MenuItem item) {
-
-
-        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        int id = item.getItemId();
-        switch (id) {
-            //update category
-            case R.id.edit:
-                final Category category = arrayList.get(info.position);
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-                builder.setTitle("Cập nhật category");
-                builder.setCancelable(false);
-                LayoutInflater inflater = LayoutInflater.from(getContext());
-                View view = inflater.inflate(R.layout.fragment_add_category,null);
-
-                final EditText edtName =( EditText)view.findViewById(R.id.edtName);
-
-
-                builder.setView(view);
-                builder.setPositiveButton("Cập nhập", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        category.setNameCategory(edtName.getText().toString());
-
-                        databaseHelper.updateCategory(category);
-                        arrayList.set(info.position,category);
-                        arrayAdapter.notifyDataSetChanged();
-                    }
-                });
-                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.cancel();
-                    }
-                });
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-                break;
-
-            //delete category
-            case R.id.delete:
-                final Category category1 = arrayList.get(info.position);
-                AlertDialog.Builder builder1= new AlertDialog.Builder(getContext());
-                builder1.setTitle("Delete");
-                builder1.setCancelable(false);
-                builder1.setMessage("Bạn muốn xóa?");
-                builder1.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        arrayAdapter.clear();
-                        databaseHelper.delete(category1);
-                        arrayList.remove(info.position);
-                        arrayAdapter.notifyDataSetChanged();
-                    }
-                });
-
-                builder1.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.cancel();
-                    }
-                });
-                AlertDialog alertDialog1= builder1.create();
-                alertDialog1.show();
-                break;
-        }
-        return super.onContextItemSelected(item);
-    }
 
 }

@@ -72,16 +72,17 @@ public class AddNoteFragment extends Fragment {
         btnAdd = dialog.findViewById(R.id.btnAdd);
         btnClose = dialog.findViewById(R.id.btnClose);
         edtName = dialog.findViewById(R.id.edtName);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
             }
         });
-        btnClose.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                //code
             }
         });
 
