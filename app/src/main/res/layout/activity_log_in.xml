@@ -10,7 +10,7 @@
         android:id="@+id/editbanner"
         android:gravity="center"
         android:textSize="50dp"
-        android:text="Đăng nhap"
+        android:text="Đăng nhập"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -38,22 +38,28 @@
         android:hint="Remember Me"
         android:layout_below="@id/edittextconfirmpassword"
         />
+
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnLogin"
-            android:layout_below="@id/bntremember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign in"
-            android:layout_marginLeft="150dp"
-            />
+            android:layout_below="@id/bntremember"
+            android:layout_marginLeft="30dp"
+            android:text="Sign in" />
 
-
-
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="111dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/bntremember"
+            android:layout_marginLeft="160dp"
+            android:text="Exit" />
     </LinearLayout>
 
 </LinearLayout>

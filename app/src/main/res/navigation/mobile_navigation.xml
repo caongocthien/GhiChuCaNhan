@@ -42,7 +42,7 @@
         tools:layout="@layout/activity_edit_profile" />
     <fragment
         android:id="@+id/nav_changePass"
-        android:name="com.example.personal_note.fragment.Changepassword"
+        android:name="com.example.personal_note.fragment.ChangePassword"
         android:label="Đổi mật khẩu"
         tools:layout="@layout/activity_changepassword" />
 </navigation>

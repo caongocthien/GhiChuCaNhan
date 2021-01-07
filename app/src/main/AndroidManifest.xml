@@ -11,7 +11,11 @@
         android:theme="@style/Theme.Personal_note">
         <activity android:name=".LogInActivity"></activity>
         <activity android:name=".SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>
@@ -20,11 +24,7 @@
             android:label="@string/title_activity_navigation"
             android:theme="@style/Theme.Personal_note.NoActionBar">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
 
