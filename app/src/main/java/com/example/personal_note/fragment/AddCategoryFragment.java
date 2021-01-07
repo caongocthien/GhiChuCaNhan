@@ -39,7 +39,6 @@ import java.util.Date;
 
 
 public class AddCategoryFragment extends Fragment {
-
     Button btnAdd, btnClose;
     Dialog dialog;
     FloatingActionButton button;
@@ -79,6 +78,9 @@ public class AddCategoryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         categoryArrayList = databaseHelper.getCategory();
         adapter = new CategoryAdapter(getContext(), categoryArrayList);
+        lvCategory = view.findViewById(R.id.lvCategory);
+        lvCategory.setAdapter(adapter);
+        registerForContextMenu(lvCategory);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -130,17 +132,12 @@ public class AddCategoryFragment extends Fragment {
                     categoryArrayList.addAll(databaseHelper.getCategory());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
-
                 }
                 dialog.dismiss();
-
-
             }
         });
 
-        lvCategory = view.findViewById(R.id.lvCategory);
-        lvCategory.setAdapter(adapter);
-        registerForContextMenu(lvCategory);
+
     }
 
     //context menu
@@ -160,15 +157,14 @@ public class AddCategoryFragment extends Fragment {
             case R.id.edit:
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
-                builder.setTitle("Cập nhật category");
+                builder.setTitle("Cập nhật nội dung");
                 builder.setCancelable(false);
                 LayoutInflater inflater = LayoutInflater.from(getContext());
-                View view = inflater.inflate(R.layout.category_dialog_layout,null);
+                View view = inflater.inflate(R.layout.fragment_update_category,null);
 
                 EditText edtName =(EditText)view.findViewById(R.id.edtName);
 
                 Date date = Calendar.getInstance().getTime();
-
 
                 builder.setView(view);
                 builder.setPositiveButton("Cập nhập", new DialogInterface.OnClickListener() {
@@ -183,8 +179,8 @@ public class AddCategoryFragment extends Fragment {
                             adapter.clear();
                             categoryArrayList.addAll(databaseHelper.getCategory());
                             adapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
                 builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
@@ -211,9 +207,8 @@ public class AddCategoryFragment extends Fragment {
                             adapter.clear();
                             categoryArrayList.addAll(databaseHelper.getCategory());
                             adapter.notifyDataSetChanged();
-
                         }
-                        Toast.makeText(getContext(), idCategory+"", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
                     }
                 });
 

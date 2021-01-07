@@ -5,20 +5,18 @@ public class Priority {
     String namePriority;
     String date;
 
-    public Priority(String namePriority, String date) {
+    public Priority(int idPriority,String namePriority, String date) {
         this.namePriority = namePriority;
         this.date = date;
+        this.idPriority = idPriority;
     }
-
-
 
     public Priority() {
     }
 
 
 
-    public Priority(int idPriority, String namePriority, String date) {
-        this.idPriority = idPriority;
+    public Priority( String namePriority, String date) {
         this.namePriority = namePriority;
         this.date = date;
     }

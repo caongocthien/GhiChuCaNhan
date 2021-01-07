@@ -1,6 +1,8 @@
 package com.example.personal_note.fragment;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,6 +76,9 @@ public class AddPriorityFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         priorityArrayList = databaseHelper.getPriority();
         adapter = new PriorityAdapter(getContext(), priorityArrayList);
+        lvPriority = view.findViewById(R.id.lvPriority);
+        lvPriority.setAdapter(adapter);
+        registerForContextMenu(lvPriority);
 
         //show dialog
         button = view.findViewById(R.id.add);
@@ -129,12 +135,93 @@ public class AddPriorityFragment extends Fragment {
 
             }
         });
-
-
-        lvPriority = view.findViewById(R.id.lvPriority);
-        lvPriority.setAdapter(adapter);
-
-
     }
+
+    //context menu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getActivity().getMenuInflater().inflate(R.menu.contexts_menu, menu);
+    }
+
+
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int pos=info.position;
+        Priority priority=priorityArrayList.get(pos);
+        int idPriority=priority.getIdPriority();
+        switch (item.getItemId()) {
+            //cập nhật priority
+            case R.id.edit:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                builder.setTitle("Cập nhật nội dung");
+                builder.setCancelable(false);
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                View view = inflater.inflate(R.layout.fragment_update_category,null);
+
+                EditText edtName =(EditText)view.findViewById(R.id.edtName);
+
+                Date date = Calendar.getInstance().getTime();
+
+                builder.setView(view);
+                builder.setPositiveButton("Cập nhập", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String name=edtName.getText().toString();
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+                        String strdate = formatter.format(date);
+                        Priority newPri=new Priority(name,strdate);
+                        if( databaseHelper.updatePriority(idPriority,newPri)>0)
+                        {
+                            adapter.clear();
+                            priorityArrayList.addAll(databaseHelper.getPriority());
+                            adapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                break;
+            //delete priority
+            case R.id.delete:
+                AlertDialog.Builder builder1= new AlertDialog.Builder(getContext());
+                builder1.setTitle("Delete");
+                builder1.setCancelable(false);
+                builder1.setMessage("Bạn muốn xóa?");
+                builder1.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(databaseHelper.deletePriority(idPriority)>0)
+                        {
+                            adapter.clear();
+                            priorityArrayList.addAll(databaseHelper.getPriority());
+                            adapter.notifyDataSetChanged();
+                        }
+                        Toast.makeText(getContext(), idPriority+"Xóa thành công", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder1.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog1= builder1.create();
+                alertDialog1.show();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+    //end context menu
 
 }

@@ -77,9 +77,10 @@ public class DatabaseHelper {
         String sql = "select * from tbl_priority";
         Cursor cursor = db.rawQuery(sql, null);
         while (cursor.moveToNext()) {
+            int id=cursor.getInt(0);
             String name = cursor.getString(1);
             String date = cursor.getString(2);
-            arrayList.add(new Priority(name, date));
+            arrayList.add(new Priority(id,name, date));
 
         }
 
@@ -95,9 +96,10 @@ public class DatabaseHelper {
         String sql = "select * from tbl_status";
         Cursor cursor = db.rawQuery(sql, null);
         while (cursor.moveToNext()) {
+            int id=cursor.getInt(0);
             String name = cursor.getString(1);
             String date = cursor.getString(2);
-            arrayList.add(new Status(name, date));
+            arrayList.add(new Status(id,name, date));
 
         }
 
