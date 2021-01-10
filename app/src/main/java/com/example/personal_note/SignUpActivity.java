@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,7 +33,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
-
         db = new DatabaseHelper(this);
         e1 = (EditText)findViewById(R.id.edittextuser);
         e2 = (EditText)findViewById(R.id.edittextpassword);

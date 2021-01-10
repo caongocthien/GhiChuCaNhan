@@ -3,6 +3,7 @@ package com.example.personal_note;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.personal_note.db.DatabaseHelper;
@@ -21,7 +22,7 @@ import androidx.appcompat.widget.Toolbar;
 import org.w3c.dom.Text;
 
 public class NavigationActivity extends AppCompatActivity {
-    TextView t1;
+    TextView t1,t2;
     private AppBarConfiguration mAppBarConfiguration;
     DatabaseHelper databaseHelper;
     @Override

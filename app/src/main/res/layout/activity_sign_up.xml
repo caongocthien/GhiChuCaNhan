@@ -10,7 +10,7 @@
         android:id="@+id/editbanner"
         android:gravity="center"
         android:textSize="50dp"
-        android:text="Đăng Ký"
+        android:text="@string/SignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -18,7 +18,7 @@
         android:id="@+id/edittextuser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your email"
+        android:hint="@string/EnterEmail"
         android:inputType="textEmailAddress"
         android:layout_below="@+id/editbanner"
         />
@@ -26,14 +26,14 @@
         android:id="@+id/edittextpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your password"
+        android:hint="@string/EnterPassword"
         android:layout_below="@id/edittextuser"
         />
     <EditText
         android:id="@+id/edittextconfirmpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Confirm your number"
+        android:hint="@string/ConfirmNumber"
         android:layout_below="@id/edittextpassword"
         />
     <CheckBox
@@ -53,7 +53,7 @@
             android:layout_below="@id/bntremember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up"
+            android:text="@string/SignUp"
 
             />
 
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Sign in"
+            android:text="@string/SignIn"
             android:layout_marginLeft="180dp"
             />
     </LinearLayout>

@@ -10,7 +10,7 @@
         android:id="@+id/editbanner"
         android:gravity="center"
         android:textSize="50dp"
-        android:text="Đăng nhập"
+        android:text="@string/SignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -18,7 +18,7 @@
         android:id="@+id/txtemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your email"
+        android:hint="@string/EnterEmail"
         android:inputType="textEmailAddress"
         android:layout_below="@+id/editbanner"
         />
@@ -26,7 +26,7 @@
         android:id="@+id/txtpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your password"
+        android:hint="@string/EnterPassword"
         android:layout_below="@id/txtemail"
         />
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/bntremember"
             android:layout_marginLeft="30dp"
-            android:text="Sign in" />
+            android:text="@string/SignIn" />
 
         <Button
             android:id="@+id/btnExit"
@@ -59,7 +59,7 @@
             android:layout_height="48dp"
             android:layout_below="@id/bntremember"
             android:layout_marginLeft="160dp"
-            android:text="Exit" />
+            android:text="@string/Exit" />
     </LinearLayout>
 
 </LinearLayout>
