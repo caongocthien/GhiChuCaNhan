@@ -94,12 +94,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvDatePick"
         android:layout_weight="1"
-        android:text="Add" />
+        android:text="Add"
+        android:backgroundTint="@color/yellow"/>
 
 
 
     <Button
+        android:backgroundTint="@color/yellow"
         android:id="@+id/btnClose"
+        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"

@@ -9,12 +9,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.personal_note.db.DatabaseHelper;
 
 public class LogInActivity extends AppCompatActivity {
     EditText e1,e2;
+    TextView textView;
     Button b1,b2;
     DatabaseHelper db;
 
@@ -25,6 +27,8 @@ public class LogInActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         e1 =(EditText)findViewById(R.id.txtemail);
         e2 = (EditText)findViewById(R.id.txtpassword);
+
+
         b1 = (Button)findViewById(R.id.btnLogin);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,12 +36,22 @@ public class LogInActivity extends AppCompatActivity {
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
                 Boolean Chkemailpassword = db.emailpassword(email,password);
+//                textView = findViewById(R.id.textG);
+//                textView.setText("ABC");
+
                 if (Chkemailpassword==true){
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     startActivity(i);
+<<<<<<< HEAD
+                    Toast.makeText(getApplicationContext(),"Dang nhap thanh cong" ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Xin chao " + email ,Toast.LENGTH_LONG).show();
+
+                }else Toast.makeText(getApplicationContext(),"Dang nhap that bai, kiem tra lai",Toast.LENGTH_SHORT).show();
+=======
                     Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();
                 }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();
+>>>>>>> d6b07bbfc44bba8dd72c06583f687d81b1b4d67a
             }
         });
         b2 = (Button)findViewById(R.id.btnExit);

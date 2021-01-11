@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="#C121C6"
+        android:backgroundTint="@color/yellow"
         android:src="@drawable/ic_baseline_add_circle_24" />
 
 </RelativeLayout>
