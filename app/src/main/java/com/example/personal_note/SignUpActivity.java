@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +20,7 @@ import com.example.personal_note.db.User;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class SignUpActivity extends AppCompatActivity {
+public class    SignUpActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     EditText e1,e2,e3;
@@ -74,7 +76,45 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+        e2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s .length() <8){
+                    e2.setError("Nhập  trên 8 ký tự");
+                }else {
+                    e2.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        e3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s .length() <8){
+                    e3.setError("Nhập  trên 8 ký tự");
+                }else {
+                    e3.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }
