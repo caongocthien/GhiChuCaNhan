@@ -35,24 +35,20 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
-                Boolean Chkemailpassword = db.emailpassword(email,password);
+                Boolean Chkemailpassword = db.emailpassword(email, password);
 //                textView = findViewById(R.id.textG);
 //                textView.setText("ABC");
 
-                if (Chkemailpassword==true){
-                    Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
+                if (Chkemailpassword == true) {
+                    Intent i = new Intent(LogInActivity.this, NavigationActivity.class);
                     startActivity(i);
-<<<<<<< HEAD
-                    Toast.makeText(getApplicationContext(),"Dang nhap thanh cong" ,Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Xin chao " + email ,Toast.LENGTH_LONG).show();
 
-                }else Toast.makeText(getApplicationContext(),"Dang nhap that bai, kiem tra lai",Toast.LENGTH_SHORT).show();
-=======
-                    Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();
-                }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();
->>>>>>> d6b07bbfc44bba8dd72c06583f687d81b1b4d67a
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Đã đăng nhập " + email, Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thất bại, kiểm tra lại thông tin", Toast.LENGTH_SHORT).show();
             }
+
         });
         b2 = (Button)findViewById(R.id.btnExit);
         b2.setOnClickListener(new View.OnClickListener() {
