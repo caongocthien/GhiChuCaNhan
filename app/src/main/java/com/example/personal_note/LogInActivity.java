@@ -36,7 +36,7 @@ public class LogInActivity extends AppCompatActivity {
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();
                 }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();
             }
         });

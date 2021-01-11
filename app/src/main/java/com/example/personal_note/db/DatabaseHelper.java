@@ -120,11 +120,12 @@ public class DatabaseHelper {
 
 
             while (cursor.moveToNext()) {
-                String firstname = cursor.getString(1);
-                String lastname = cursor.getString(2);
-                String email = cursor.getString(3);
-                String password = cursor.getString(4);
-                arrayList.add(new User(email, password));
+
+                String email = cursor.getString(1);
+                String password = cursor.getString(2);
+                String firstname = cursor.getString(3);
+                String lastname = cursor.getString(4);
+                arrayList.add(new User(email, password,firstname, lastname));
             }
         }
         db.close();
@@ -200,6 +201,8 @@ public class DatabaseHelper {
         ContentValues user = new ContentValues();
         user.put("email", uesr.getEmailUser());
         user.put("password", uesr.getPasswordUser());
+        user.put("firstname",uesr.getFirstnameUser());
+        user.put("lastname",uesr.getLastnameUser());
         db.insert("tbl_user", null, user);
         long adduser = db.insert("tbl_user", null, user);
         db.close();

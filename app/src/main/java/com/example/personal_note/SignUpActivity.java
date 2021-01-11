@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class    SignUpActivity extends AppCompatActivity {
 
     DatabaseHelper db;
-    EditText e1,e2,e3;
+    EditText e1,e2,e3,e4,e5;
     Button b1,b2;
     DatabaseHelper databaseHelper;
     ArrayList<User> arrayList;
@@ -44,7 +44,9 @@ public class    SignUpActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         e1 = (EditText)findViewById(R.id.edittextuser);
         e2 = (EditText)findViewById(R.id.edittextpassword);
-        e3 = (EditText)findViewById(R.id.edittextconfirmpassword);
+        e3 = (EditText)findViewById(R.id.editfirstname);
+        e4 = (EditText)findViewById(R.id.editlastname);
+        e5 = (EditText)findViewById(R.id.edittextconfirmpassword);
         b1 = (Button)findViewById(R.id.bntsignup);
         b2 = (Button)findViewById(R.id.bntsignin);
         b2.setOnClickListener(new View.OnClickListener() {
@@ -60,22 +62,24 @@ public class    SignUpActivity extends AppCompatActivity {
                 String s1 = e1.getText().toString();
                 String s2 = e2.getText().toString();
                 String s3 = e3.getText().toString();
+                String s4 = e4.getText().toString();
+                String s5 = e5.getText().toString();
                 if(s1.trim().equals("")||s2.trim().equals("")||s3.trim().equals("")) {
                     Toast.makeText(getApplicationContext(),"Thiếu thông tin, hãy kiểm tra lại!",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    if(s2.equals(s3)){
+                    if(s2.equals(s5)){
                         Boolean chkemail = db.chkemail(s1);
                         if (chkemail==true){
 
-                            User user = new User(s1,s2);
+                            User user = new User(s1,s2,s3,s4);
                             if (databaseHelper.insertUser(user)>0) {
 //                                arrayAdapter.clear();
                                 arrayList.addAll(databaseHelper.getUser());
 //                                arrayAdapter.notifyDataSetChanged();
                                 Intent i = new Intent(SignUpActivity.this,LogInActivity.class);
                                 startActivity(i);
-                                //Toast.makeText(SignUpActivity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             }
                         }else Toast.makeText(getApplicationContext(),"Tài khoản đã tồn tại",Toast.LENGTH_SHORT).show();
                     } else Toast.makeText(getApplicationContext(),"Mật khẩu không đúng",Toast.LENGTH_SHORT).show();
@@ -102,7 +106,7 @@ public class    SignUpActivity extends AppCompatActivity {
 
             }
         });
-        e3.addTextChangedListener(new TextWatcher() {
+        e5.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -111,9 +115,9 @@ public class    SignUpActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s .length() <8){
-                    e3.setError("Nhập  trên 8 ký tự");
+                    e5.setError("Nhập  trên 8 ký tự");
                 }else {
-                    e3.setError(null);
+                    e5.setError(null);
                 }
             }
 
