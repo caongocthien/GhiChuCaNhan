@@ -1,3 +1,4 @@
+
 package com.example.personal_note;
 
 import androidx.appcompat.app.AppCompatActivity;
