@@ -33,9 +33,9 @@ public class LogInActivity extends AppCompatActivity {
                 if (Chkemailpassword==true){
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     startActivity(i);
-                    Toast.makeText(getApplicationContext(),"Dang nhap thanh cong",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Xin chao " + email ,Toast.LENGTH_LONG).show();
-                }else Toast.makeText(getApplicationContext(),"Dang nhap that bai, kiem tra lai",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_LONG).show();
+                }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();
             }
         });
         b2 = (Button)findViewById(R.id.btnExit);
