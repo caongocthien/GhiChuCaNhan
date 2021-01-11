@@ -117,10 +117,7 @@ public class DatabaseHelper {
         String sql = "select * from tbl_user";
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null) {
-
-
             while (cursor.moveToNext()) {
-
                 String email = cursor.getString(1);
                 String password = cursor.getString(2);
                 String firstname = cursor.getString(3);
