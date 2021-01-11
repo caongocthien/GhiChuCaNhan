@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/EnterPassword"
         android:layout_below="@id/txtemail"
+        android:password="true"
         />
 
 

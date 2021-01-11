@@ -21,20 +21,28 @@
         android:hint="@string/EnterEmail"
         android:inputType="textEmailAddress"
         android:layout_below="@+id/editbanner"
+        app:hintEnabled="true"
         />
     <EditText
         android:id="@+id/edittextpassword"
         android:layout_width="match_parent"
+        app:hintEnabled="true"
         android:layout_height="wrap_content"
-        android:hint="@string/EnterPassword"
+        android:hint="Nhập password từ 6 ký tự trở lên"
         android:layout_below="@id/edittextuser"
+        android:password="true"
+
         />
     <EditText
         android:id="@+id/edittextconfirmpassword"
         android:layout_width="match_parent"
+        app:hintEnabled="true"
         android:layout_height="wrap_content"
-        android:hint="@string/ConfirmNumber"
+        android:hint="Nhập lại mật khẩu"
         android:layout_below="@id/edittextpassword"
+        android:password="true"
+
+
         />
     <CheckBox
         android:id="@+id/bntremember"

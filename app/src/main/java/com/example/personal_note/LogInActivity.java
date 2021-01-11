@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,10 +42,16 @@ public class LogInActivity extends AppCompatActivity {
                 if (Chkemailpassword==true){
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     startActivity(i);
+<<<<<<< HEAD
                     Toast.makeText(getApplicationContext(),"Dang nhap thanh cong" ,Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"Xin chao " + email ,Toast.LENGTH_LONG).show();
 
                 }else Toast.makeText(getApplicationContext(),"Dang nhap that bai, kiem tra lai",Toast.LENGTH_SHORT).show();
+=======
+                    Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_LONG).show();
+                }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();
+>>>>>>> d6b07bbfc44bba8dd72c06583f687d81b1b4d67a
             }
         });
         b2 = (Button)findViewById(R.id.btnExit);
@@ -52,6 +60,26 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(LogInActivity.this,SignUpActivity.class);
                 startActivity(i);
+            }
+        });
+        e2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s .length() <8){
+                    e2.setError("Nhập  trên 8 ký tự");
+                }else {
+                    e2.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }

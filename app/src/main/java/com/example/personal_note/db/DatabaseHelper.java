@@ -110,7 +110,7 @@ public class DatabaseHelper {
 
 
     //get user
-    public ArrayList getUser() {
+    public ArrayList<User> getUser() {
         SQLiteDatabase db = openDB();
         ArrayList<User> arrayList = new ArrayList<>();
 

@@ -6,26 +6,30 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.personal_note.adapter.CategoryAdapter;
+import com.example.personal_note.adapter.UserAdapter;
 import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class SignUpActivity extends AppCompatActivity {
+public class    SignUpActivity extends AppCompatActivity {
 
     DatabaseHelper db;
     EditText e1,e2,e3;
     Button b1,b2;
     DatabaseHelper databaseHelper;
-    ArrayList arrayList;
-    ArrayAdapter arrayAdapter;
+    ArrayList<User> arrayList;
+    //ArrayAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,10 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
+
+
+        arrayList = databaseHelper.getUser();
+//        arrayAdapter = new UserAdapter(getContext(), categoryArrayList);
         db = new DatabaseHelper(this);
         e1 = (EditText)findViewById(R.id.edittextuser);
         e2 = (EditText)findViewById(R.id.edittextpassword);
@@ -53,7 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String s2 = e2.getText().toString();
                 String s3 = e3.getText().toString();
                 if(s1.trim().equals("")||s2.trim().equals("")||s3.trim().equals("")) {
-                    Toast.makeText(getApplicationContext(),"Thieu thong tin",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Thiếu thông tin, hãy kiểm tra lại!",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     if(s2.equals(s3)){
@@ -62,19 +70,57 @@ public class SignUpActivity extends AppCompatActivity {
 
                             User user = new User(s1,s2);
                             if (databaseHelper.insertUser(user)>0) {
-                                arrayAdapter.clear();
+//                                arrayAdapter.clear();
                                 arrayList.addAll(databaseHelper.getUser());
-                                arrayAdapter.notifyDataSetChanged();
+//                                arrayAdapter.notifyDataSetChanged();
                                 Intent i = new Intent(SignUpActivity.this,LogInActivity.class);
                                 startActivity(i);
                                 //Toast.makeText(SignUpActivity.this, "Dang ky thanh cong", Toast.LENGTH_SHORT).show();
                             }
-                        }else Toast.makeText(getApplicationContext(),"Tai khoan da ton tai",Toast.LENGTH_SHORT).show();
-                    } else Toast.makeText(getApplicationContext(),"Mat khau khong khop",Toast.LENGTH_SHORT).show();
+                        }else Toast.makeText(getApplicationContext(),"Tài khoản đã tồn tại",Toast.LENGTH_SHORT).show();
+                    } else Toast.makeText(getApplicationContext(),"Mật khẩu không đúng",Toast.LENGTH_SHORT).show();
                 }
             }
         });
+        e2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s .length() <8){
+                    e2.setError("Nhập  trên 8 ký tự");
+                }else {
+                    e2.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        e3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s .length() <8){
+                    e3.setError("Nhập  trên 8 ký tự");
+                }else {
+                    e3.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }
