@@ -42,6 +42,7 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
         <Button
+            android:backgroundTint="@color/yellow"
             android:id="@+id/btnChange"
             android:layout_below="@id/edittextemail"
             android:layout_width="wrap_content"
@@ -51,6 +52,7 @@
             />
 
         <Button
+            android:backgroundTint="@color/yellow"
             android:id="@+id/btnHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

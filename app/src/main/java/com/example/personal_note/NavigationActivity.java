@@ -1,5 +1,7 @@
 package com.example.personal_note;
 
+import android.accounts.Account;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -25,13 +27,14 @@ public class NavigationActivity extends AppCompatActivity {
     TextView t1,t2;
     private AppBarConfiguration mAppBarConfiguration;
     DatabaseHelper databaseHelper;
+    private  TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
+
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
-
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

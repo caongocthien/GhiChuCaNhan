@@ -25,6 +25,7 @@
         android:text="Name" />
 
     <Button
+        android:backgroundTint="@color/yellow"
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,6 +34,8 @@
         android:text="Add" />
 
     <Button
+        android:backgroundTint="@color/yellow"
+        android:layout_marginLeft="20dp"
         android:id="@+id/btnClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

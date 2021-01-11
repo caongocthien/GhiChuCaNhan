@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.personal_note.db.DatabaseHelper;
 import com.github.mikephil.charting.charts.PieChart;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class HomeActivity extends Fragment {
     DatabaseHelper databaseHelper;
+    TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class HomeActivity extends Fragment {
         databaseHelper =new DatabaseHelper(getContext());
 
         Description desc = new Description();
+
         desc.setText("Dashboard");
         desc.setTextSize(20f);
 
