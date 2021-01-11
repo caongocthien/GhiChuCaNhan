@@ -5,11 +5,10 @@ public class User {
 
     public User(int idUser, String emailUser, String passwordUser, String firstnameUser, String lastnameUser ) {
         this.idUser = idUser;
-
-        this.emailUser = emailUser;
-        this.passwordUser = passwordUser;
         this.firstnameUser = firstnameUser;
         this.lastnameUser = lastnameUser;
+        this.emailUser = emailUser;
+        this.passwordUser = passwordUser;
 
     }
 
