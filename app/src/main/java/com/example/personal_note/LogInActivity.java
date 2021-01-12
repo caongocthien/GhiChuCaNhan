@@ -16,8 +16,8 @@ import android.widget.Toast;
 import com.example.personal_note.db.DatabaseHelper;
 
 public class LogInActivity extends AppCompatActivity {
-    EditText e1,e2;
-    TextView textView;
+    EditText e1,e2,e3;
+    TextView textView,tv1;
     Button b1,b2;
     DatabaseHelper db;
 
@@ -28,8 +28,7 @@ public class LogInActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
         e1 =(EditText)findViewById(R.id.txtemail);
         e2 = (EditText)findViewById(R.id.txtpassword);
-
-
+        tv1 = (TextView)findViewById(R.id.textView2) ;
         b1 = (Button)findViewById(R.id.btnLogin);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,15 +36,13 @@ public class LogInActivity extends AppCompatActivity {
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
                 Boolean Chkemailpassword = db.emailpassword(email,password);
-//                textView = findViewById(R.id.textG);
-//                textView.setText("ABC");
+  //            textView = findViewById(R.id.textG);
+   //           textView.setText("ABC");
 
                 if (Chkemailpassword==true){
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
+                    i.putExtra("email",e1.getText().toString());
                     startActivity(i);
-
-
-
                     Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();
                 }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();}

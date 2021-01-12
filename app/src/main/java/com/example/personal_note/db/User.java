@@ -1,7 +1,12 @@
 package com.example.personal_note.db;
+import  java.io.Serializable;
 
-public class User {
+public class User  implements Serializable {
     int idUser;
+    String emailUser;
+    String passwordUser;
+    String firstnameUser;
+    String lastnameUser;
 
     public User(int idUser, String emailUser, String passwordUser, String firstnameUser, String lastnameUser ) {
         this.idUser = idUser;
@@ -11,11 +16,6 @@ public class User {
         this.passwordUser = passwordUser;
 
     }
-
-    String emailUser;
-    String passwordUser;
-    String firstnameUser;
-    String lastnameUser;
 
     public User() {
     }

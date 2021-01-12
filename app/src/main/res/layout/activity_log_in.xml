@@ -56,12 +56,12 @@
             android:text="@string/SignIn" />
 
         <Button
-            android:backgroundTint="@color/yellow"
             android:id="@+id/btnExit"
-            android:layout_width="111dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/bntremember"
-            android:layout_marginLeft="160dp"
+            android:layout_marginLeft="100dp"
+            android:backgroundTint="@color/yellow"
             android:text="@string/Exit" />
     </LinearLayout>
 

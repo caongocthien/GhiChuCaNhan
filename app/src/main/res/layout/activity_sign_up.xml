@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         app:hintEnabled="true"
         android:layout_height="wrap_content"
-        android:hint="Nhập password từ 6 ký tự trở lên"
+        android:hint="@string/EnterPassword"
         android:layout_below="@id/edittextuser"
         android:password="true"
 
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         app:hintEnabled="true"
         android:layout_height="wrap_content"
-        android:hint="Nhập lại mật khẩu"
+        android:hint="@string/ConfirmPassword"
         android:layout_below="@id/edittextpassword"
         android:password="true"
 
@@ -81,7 +81,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/SignUp"
-
             />
 
         <Button

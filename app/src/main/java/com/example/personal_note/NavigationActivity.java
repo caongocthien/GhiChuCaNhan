@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.personal_note.db.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,9 +33,12 @@ public class NavigationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
-
+        Intent intent=getIntent();
+        String email=intent.getStringExtra("email");
+        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
+        t2 =findViewById(R.id.textView2);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -30,8 +30,8 @@
     <string name="btnHome">Home</string>
     <string name="SignUp">Sign Up</string>
     <string name="EnterEmail">Enter your email</string>
-    <string name="EnterPassword">Enter your password</string>
-    <string name="ConfirmNumber">Confirm your number</string>
+    <string name="EnterPassword">Enter your password (more than 8 words)</string>
+    <string name="ConfirmPassword">Confirm your number</string>
     <string name="SignIn">Sign In</string>
     <string name="Exit">Exit</string>
 </resources>

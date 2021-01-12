@@ -31,8 +31,9 @@
     <string name="btnHome">Trở Về</string>
     <string name="SignUp">Đăng Ký</string>
     <string name="EnterEmail">Nhập email của bạn</string>
-    <string name="EnterPassword">Nhập mật khẩu của bạn</string>
-    <string name="ConfirmNumber">Xác nhận mật khẩu</string>
+    <string name="EnterPassword">Nhập mật khẩu của bạn (trên 8 ký tự)</string>
+    <string name="ConfirmPassword">Xác nhận mật khẩu</string>
     <string name="SignIn">Đăng Nhập</string>
     <string name="Exit">Trở Về</string>
+
 </resources>
