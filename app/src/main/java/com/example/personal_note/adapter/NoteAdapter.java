@@ -11,32 +11,52 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.personal_note.R;
+import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.Note;
 
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class NoteAdapter extends ArrayAdapter<Note> {
-    public NoteAdapter(@NonNull Context context, int resource, @NonNull List objects) {
-        super(context, 0, objects);
+    DatabaseHelper db;
+    public NoteAdapter(@NonNull Context context,  ArrayList<Note> noteArrayList) {
+        super(context, 0, noteArrayList);
     }
+
+
     @NonNull
-
-
     @Override
-    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Note note = getItem(position);
-        if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.status_layout,parent,false);
-            TextView tvNoteCate = convertView.findViewById(R.id.tvNoteCategory);
-            TextView tvNoteDate = convertView.findViewById(R.id.tvNotePlanDate);
-            TextView tvNotePri = convertView.findViewById(R.id.tvNotePriority);
 
-            tvNoteCate.setText(note.getIdCategory());
+        if (convertView == null){
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.note_layout,parent,false);
+
+
+            TextView tvNameNote = convertView.findViewById(R.id.tvNameNote);
+            TextView tvNoteCate = convertView.findViewById(R.id.tvNoteCategory);
+            TextView tvNoteSta = convertView.findViewById(R.id.tvNoteStatus);
+            TextView tvNoteDate = convertView.findViewById(R.id.tvDateNote);
+            TextView tvNotePri = convertView.findViewById(R.id.tvNotePriority);
+            TextView tvNotePlanDate = convertView.findViewById(R.id.tvNotePlanDate);
+
+
+            db= new DatabaseHelper(getContext());
+
+            String catName = db.getNameCategory(note.getIdCategory());
+            String staName = db.getNameStatus(note.getIdStatus());
+            String priName = db.getNameStatus(note.getIdPriority());
+
+
+
+            tvNameNote.setText(note.getName());
+            tvNoteCate.setText(catName);
+            tvNoteDate.setText(staName);
+            tvNotePri.setText(priName);
             tvNoteDate.setText(note.getDate());
-            tvNotePri.setText(note.getIdPriority());
+            tvNotePlanDate.setText(note.getPlanDate());
         }
         return convertView;
     }

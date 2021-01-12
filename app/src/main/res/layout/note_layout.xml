@@ -5,8 +5,7 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".NoteActivity"
-    >
+    tools:context=".NoteActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="Name: "/>
         <TextView
-            android:id="@+id/tvNameStatus"
+            android:id="@+id/tvNameNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Note "/>
@@ -35,6 +34,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thien "/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: "/>
+        <TextView
+            android:id="@+id/tvNoteStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok "/>
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +89,7 @@
             android:layout_height="wrap_content"
             android:text="Create Date: "/>
         <TextView
-            android:id="@+id/tvDateStatus"
+            android:id="@+id/tvDateNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2021-1-1 "/>

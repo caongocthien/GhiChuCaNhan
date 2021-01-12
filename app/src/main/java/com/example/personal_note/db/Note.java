@@ -1,34 +1,41 @@
 package com.example.personal_note.db;
 
+
+
+
 public class Note {
-    public Note(int id, String name, String date, int idStatus, int idCategory, int idPriority) {
+    int id;
+    String name;
+    String date;
+    int idStatus;
+    int idCategory;
+    int idPriority;
+    int idUser;
+    String planDate;
+
+    public Note(int id, String name, String date, String planeDate, int id_User, int id_Category, int id_Status, int id_Priority) {
+    }
+
+    public Note(int id, String name, String date, int idStatus, int idCategory, int idPriority, int idUser, String planDate) {
         this.id = id;
         this.name = name;
         this.date = date;
         this.idStatus = idStatus;
         this.idCategory = idCategory;
         this.idPriority = idPriority;
+        this.idUser = idUser;
+        this.planDate = planDate;
     }
 
-
-
-    public Note() {
-    }
-    int id;
-
-    public Note(String name, String date, int idStatus, int idCategory, int idPriority) {
+    public Note(String name, String date, String planDate, int idUser, int idCategory, int idStatus, int idPriority) {
         this.name = name;
         this.date = date;
         this.idStatus = idStatus;
         this.idCategory = idCategory;
         this.idPriority = idPriority;
+        this.idUser = idUser;
+        this.planDate = planDate;
     }
-
-    String name;
-    String date;
-    int idStatus;
-    int idCategory;
-    int idPriority;
 
     public int getId() {
         return id;
@@ -77,6 +84,31 @@ public class Note {
     public void setIdPriority(int idPriority) {
         this.idPriority = idPriority;
     }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getPlanDate() {
+        return planDate;
+    }
+
+    public void setPlanDate(String planDate) {
+        this.planDate = planDate;
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

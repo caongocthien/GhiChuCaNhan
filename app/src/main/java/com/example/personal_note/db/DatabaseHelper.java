@@ -14,11 +14,6 @@ public class DatabaseHelper {
     Context context;
 
     private String dbName = "note_personal.db";
-//    private static final String CATEGORY = "tbl_Category";
-//    private static final String PRIORITY = "tbl_Priority";
-//    private static final String STATUS = "tbl_Status";
-//    private static final String NOTE = "tbl_Note";
-//    private static final String USER = "tbl_User";
 
 
     public DatabaseHelper(Context context) {
@@ -40,7 +35,7 @@ public class DatabaseHelper {
         String category = "create table if not exists tbl_category(id integer PRIMARY KEY autoincrement,name text,date text);";
         String status = "create table if not exists tbl_status(id integer PRIMARY KEY autoincrement,name text,date text);";
         String priority = "create table if not exists tbl_priority(id integer PRIMARY KEY autoincrement,name text,date text);";
-        String note = "create table if not exists tbl_note(id integer PRIMARY KEY autoincrement,name text,date text,id_User integer,id_Catagory integer,id_Status integer, id_priority integer ,FOREIGN KEY (id_Catagory) REFERENCES tbl_category (id) ,FOREIGN KEY (id_Status) REFERENCES tbl_status (id),FOREIGN KEY (id_priority) REFERENCES tbl_priority (id),FOREIGN KEY (id_User) REFERENCES tbl_user (id));";
+        String note = "create table if not exists tbl_note(id integer PRIMARY KEY autoincrement,name text,date text,plan_date text,id_User integer,id_Catagory integer,id_Status integer, id_priority integer ,FOREIGN KEY (id_Catagory) REFERENCES tbl_category (id) ,FOREIGN KEY (id_Status) REFERENCES tbl_status (id),FOREIGN KEY (id_priority) REFERENCES tbl_priority (id),FOREIGN KEY (id_User) REFERENCES tbl_user (id));";
         String user = "create table if not exists tbl_user(id integer PRIMARY KEY autoincrement, firstname text, lastname text,email text, password text);";
         db.execSQL(category);
         db.execSQL(priority);
@@ -96,11 +91,78 @@ public class DatabaseHelper {
         String sql = "select * from tbl_status";
         Cursor cursor = db.rawQuery(sql, null);
         while (cursor.moveToNext()) {
-            int id=cursor.getInt(0);
+            int id = cursor.getInt(0);
             String name = cursor.getString(1);
             String date = cursor.getString(2);
-            arrayList.add(new Status(id,name, date));
+            arrayList.add(new Status(id, name, date));
 
+        }
+
+        db.close();
+        return arrayList;
+    }
+
+    //getnameCategory
+    public String getNameCategory(int id){
+        SQLiteDatabase db = openDB();
+        String sql = "select * from tbl_category where id =  "+ id;
+        Cursor cursor = db.rawQuery(sql, null);
+        String name1;
+        while (cursor.moveToNext()) {
+            name1 = cursor.getString(1);
+            return name1;
+        }
+
+        return null;
+
+    }
+    //get namePrioriry
+    public String getNamePriority(int id){
+        SQLiteDatabase db = openDB();
+        String sql = "select * from tbl_priority where id =  "+ id;
+        Cursor cursor = db.rawQuery(sql, null);
+        String name1;
+        while (cursor.moveToNext()) {
+            name1 = cursor.getString(1);
+            return name1;
+        }
+
+        return null;
+
+    }
+
+    //get nameStatus
+    public String getNameStatus(int id){
+        SQLiteDatabase db = openDB();
+        String sql = "select * from tbl_priority where id =  "+ id;
+        Cursor cursor = db.rawQuery(sql, null);
+        String name1;
+        while (cursor.moveToNext()) {
+            name1 = cursor.getString(1);
+            return name1;
+        }
+
+        return null;
+
+    }
+
+    //get Note
+    public ArrayList<Note> getNote() {
+        SQLiteDatabase db = openDB();
+        ArrayList<Note> arrayList = new ArrayList<>();
+
+        String sql = "select * from tbl_note";
+        Cursor cursor = db.rawQuery(sql, null);
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            String date = cursor.getString(2);
+            String planeDate = cursor.getString(3);
+            int id_User = cursor.getInt(4);
+            int id_Category = cursor.getInt(5);
+            int id_Priority = cursor.getInt(6);
+            int id_Status = cursor.getInt(7);
+            arrayList.add(new Note(id, name, date, planeDate ,id_User, id_Category, id_Status, id_Priority));
         }
 
         db.close();
@@ -139,6 +201,23 @@ public class DatabaseHelper {
         long status = db.insert("tbl_category", null, category);
         db.close();
         return status;
+    }
+
+    //Them Note
+    public long insertNote(Note not) {
+        SQLiteDatabase db = openDB();
+        ContentValues note = new ContentValues();
+        note.put("name", not.getName());
+        note.put("date", not.getDate());
+        note.put("plan_date", not.getPlanDate());
+        note.put("id_User", not.getIdUser());
+        note.put("id_Catagory", not.getIdCategory());
+        note.put("id_Status", not.getIdStatus());
+        note.put("id_Priority", not.getIdPriority());
+        long status = db.insert("tbl_note", null, note);
+        db.close();
+        return status;
+
     }
 
 
