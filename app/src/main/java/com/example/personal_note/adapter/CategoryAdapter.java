@@ -22,7 +22,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
     public CategoryAdapter(@NonNull Context context, ArrayList<Category> categories) {
         super(context, 0, categories);
     }
-
+//test
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
