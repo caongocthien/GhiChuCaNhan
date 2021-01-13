@@ -56,9 +56,16 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
     int hour;
     int minute;
     int sec;
+
+
     ArrayList<Note> noteArrayList;
     NoteAdapter adapter;
+
+
+
     ListView listView;
+
+
 
     private DatePickerDialog.OnDateSetListener dataSetListenner;
     private TimePickerDialog.OnTimeSetListener timeSetListener;
@@ -104,7 +111,6 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         adapter = new NoteAdapter(getContext(), noteArrayList);
 
         //listview
-
         listView = view.findViewById(R.id.rvNote);
         listView.setAdapter(adapter);
 

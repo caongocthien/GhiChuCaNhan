@@ -13,10 +13,11 @@ public class Note {
     int idUser;
     String planDate;
 
-    public Note(int id, String name, String date, String planeDate, int id_User, int id_Category, int id_Status, int id_Priority) {
-    }
 
-    public Note(int id, String name, String date, int idStatus, int idCategory, int idPriority, int idUser, String planDate) {
+
+
+
+    public Note(int id, String name, String date, String planDate, int idUser, int idCategory, int idStatus, int idPriority) {
         this.id = id;
         this.name = name;
         this.date = date;

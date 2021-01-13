@@ -134,7 +134,7 @@ public class DatabaseHelper {
     //get nameStatus
     public String getNameStatus(int id){
         SQLiteDatabase db = openDB();
-        String sql = "select * from tbl_priority where id =  "+ id;
+        String sql = "select * from tbl_status where id =  "+ id;
         Cursor cursor = db.rawQuery(sql, null);
         String name1;
         while (cursor.moveToNext()) {
