@@ -1,33 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow"
+    android:background="@drawable/button_background"
     tools:context=".SplashScreenActivity">
 
     <ImageView
         android:id="@+id/noteImg"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="221dp"
-        android:src="@drawable/ic_logo" />
-
-    <TextView
-        android:id="@+id/txtSplash"
-        android:layout_width="335dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/noteImg"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="406dp"
-        android:gravity="center"
-        android:text="@string/welcomeApp"
-        android:textColor="@color/black"
-        android:textSize="40dp" />
-</RelativeLayout>
+        android:src="@drawable/note"
+        android:layout_marginLeft="40dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

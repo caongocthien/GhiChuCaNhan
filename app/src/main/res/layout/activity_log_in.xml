@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
     <TextView
@@ -11,24 +13,29 @@
         android:gravity="center"
         android:textSize="50dp"
         android:text="@string/SignIn"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
     <EditText
         android:id="@+id/txtemail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/EnterEmail"
         android:inputType="textEmailAddress"
-        android:layout_below="@+id/editbanner"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_background"
+        android:paddingLeft="20dp"
         />
     <EditText
         android:id="@+id/txtpassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/EnterPassword"
-        android:layout_below="@id/txtemail"
-        android:password="true"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_background"
+        android:paddingLeft="20dp"
         />
 
 
@@ -44,25 +51,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:backgroundTint="@color/yellow"
+        <android.widget.Button
             android:id="@+id/btnLogin"
-            android:layout_width="wrap_content"
+            android:text="@string/SignIn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/bntremember"
-            android:layout_marginLeft="30dp"
-            android:text="@string/SignIn" />
+            android:background="@drawable/button_background"/>
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btnExit"
-            android:layout_width="wrap_content"
+            android:text="@string/Exit"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/bntremember"
-            android:layout_marginLeft="100dp"
-            android:backgroundTint="@color/yellow"
-            android:text="@string/Exit" />
+            android:background="@drawable/button_background"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -4,18 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_margin="10dp"
     tools:context=".fragment.AddCategoryFragment">
 
-
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="40sp"
+        android:text="ADD NOTE" />
 
 
     <EditText
         android:id="@+id/edtNoteName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:layout_weight="1"
         android:ems="10"
+        android:layout_below="@id/textView"
         android:inputType="textPersonName"
-        android:hint="Enter Note Name ..." />
+        android:background="@drawable/edittext_background"
+        android:hint="Name"  />
 
     <LinearLayout
         android:id="@+id/SelCat"
@@ -26,13 +39,14 @@
             android:id="@+id/positionCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="Select Category..."/>
 
         <Spinner
             android:id="@+id/spnCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="8dp"
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
             android:layout_below="@id/edtNoteName"/>
 
@@ -47,13 +61,16 @@
             android:id="@+id/positionPri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+
             android:text="Select Priority..."/>
 
         <Spinner
             android:id="@+id/spnPriority"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="25dp"
+
 
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
             android:layout_below="@id/spnCategory"/>
@@ -69,13 +86,17 @@
             android:id="@+id/positionSta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+
+
             android:text="Select Status..."/>
 
         <Spinner
             android:id="@+id/spnStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="31dp"
+
 
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
             android:layout_below="@id/spnPriority"/>
@@ -91,38 +112,48 @@
         android:id="@+id/tvDatePick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
+
         android:text="Select plan date..."
         android:layout_below="@id/SelSta"/>
         <TextView
             android:id="@+id/tvTimePick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+
             android:text=""/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvDatePick"
-        android:layout_weight="1"
-        android:text="Add"
-        android:backgroundTint="@color/yellow"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/edtName">
 
 
 
-    <Button
-        android:backgroundTint="@color/yellow"
-        android:id="@+id/btnClose"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_below="@id/tvDatePick"
-        android:layout_toRightOf="@id/btnAdd"
-        android:text="Close" />
+            <android.widget.Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:layout_weight="1"
+                android:text="Add" />
+
+            <android.widget.Button
+                android:id="@+id/btnClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/btnAdd"
+                android:background="@drawable/button_background"
+                android:layout_weight="1"
+                android:text="Close" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

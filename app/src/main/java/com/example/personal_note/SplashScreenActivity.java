@@ -22,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         myimg = (ImageView) findViewById(R.id.noteImg);
-        mytv = (TextView) findViewById(R.id.txtSplash);
+//        mytv = (TextView) findViewById(R.id.txtSplash);
         myanim = AnimationUtils.loadAnimation(this, R.anim.myanim);
         myimg.startAnimation(myanim);
         mytv.startAnimation(myanim);
