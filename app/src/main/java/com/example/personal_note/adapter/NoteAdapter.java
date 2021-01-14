@@ -49,7 +49,7 @@ public class NoteAdapter extends ArrayAdapter<Note> {
 
             String catName = db.getNameCategory(note.getIdCategory());
             String staName = db.getNameStatus(note.getIdStatus());
-            String priName = db.getNameStatus(note.getIdPriority());
+            String priName = db.getNamePriority(note.getIdPriority());
 
 
             tvNameNote.setText(note.getName());

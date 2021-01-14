@@ -28,7 +28,7 @@ public class Note {
         this.planDate = planDate;
     }
 
-    public Note(String name, String date, String planDate, int idUser, int idCategory, int idStatus, int idPriority) {
+    public Note(String name, String date, String planDate, int idUser, int idStatus, int idCategory, int idPriority) {
         this.name = name;
         this.date = date;
         this.idStatus = idStatus;
@@ -37,6 +37,7 @@ public class Note {
         this.idUser = idUser;
         this.planDate = planDate;
     }
+
 
     public int getId() {
         return id;
