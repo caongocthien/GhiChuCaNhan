@@ -392,7 +392,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
                         String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
 
 
-                        Note note = new Note(name, strdate,planDate,1,1,1,1);
+                        Note note = new Note(name, strdate,planDate,1,2,2,2);
 
                         if( databaseHelper.updateNote(idNote,note)>0)
                         {

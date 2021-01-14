@@ -269,7 +269,7 @@ public class DatabaseHelper {
         db.close();
         return status;
     }
-    //Xoa Priority
+    //Xoa note
 
     public long deleteNote(int id) {
         SQLiteDatabase db = openDB();
