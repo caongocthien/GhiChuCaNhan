@@ -50,6 +50,7 @@
             android:text="Ok "/>
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text="Slow "/>
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

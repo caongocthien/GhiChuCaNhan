@@ -139,6 +139,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         btnClose = dialog.findViewById(R.id.btnClose);
         edtName = dialog.findViewById(R.id.edtNoteName);
 
+
         posCat = dialog.findViewById(R.id.positionCat);
         posSta = dialog.findViewById(R.id.positionSta);
         posPri = dialog.findViewById(R.id.positionPri);
