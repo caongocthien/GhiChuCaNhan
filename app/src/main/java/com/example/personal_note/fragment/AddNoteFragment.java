@@ -1,14 +1,18 @@
 package com.example.personal_note.fragment;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -113,6 +117,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         //listview
         listView = view.findViewById(R.id.rvNote);
         listView.setAdapter(adapter);
+        registerForContextMenu(listView);
 
 
 
@@ -280,7 +285,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
                 String name = edtName.getText().toString();
                 int id_user = 1;
                 String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
-                int id_category = Integer.parseInt(posSta.getText().toString());;
+                int id_category = Integer.parseInt(posSta.getText().toString());
                 int id_status = Integer.parseInt(posCat.getText().toString());
                 int id_priority = Integer.parseInt(posPri.getText().toString());
                 Date date = Calendar.getInstance().getTime();
@@ -354,4 +359,90 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         String time = hourOfDay + ":" + minute;
     }
+    //context menu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getActivity().getMenuInflater().inflate(R.menu.contexts_menu, menu);
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        int pos=info.position;
+        Note note=noteArrayList.get(pos);
+        int idNote=note.getId();
+        switch (item.getItemId()) {
+            case R.id.edit:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Cập nhật nội dung");
+                builder.setCancelable(false);
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                View view = inflater.inflate(R.layout.fragment_update_note,null);
+
+                EditText editText = (EditText) view.findViewById(R.id.edtNoteName) ;
+                Date date = Calendar.getInstance().getTime();
+
+                builder.setView(view);
+                builder.setPositiveButton("Cập nhập", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String name = editText.getText().toString();
+                        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+                        String strdate = formatter.format(date);
+                        String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
+
+
+                        Note note = new Note(name, strdate,planDate,1,1,1,1);
+
+                        if( databaseHelper.updateNote(idNote,note)>0)
+                        {
+                            adapter.clear();
+                            noteArrayList.addAll(databaseHelper.getNote());
+                            adapter.notifyDataSetChanged();
+                            Toast.makeText(getContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.cancel();
+                    }
+                });
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+                break;
+            //delete category
+            case R.id.delete:
+                AlertDialog.Builder builder1= new AlertDialog.Builder(getContext());
+                builder1.setTitle("Delete");
+                builder1.setCancelable(false);
+                builder1.setMessage("Bạn muốn xóa?");
+                builder1.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if(databaseHelper.deleteNote(idNote)>0)
+                        {
+                            adapter.clear();
+                            categoryArrayList.addAll(databaseHelper.getCategory());
+                            adapter.notifyDataSetChanged();
+                        }
+                        Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder1.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog1= builder1.create();
+                alertDialog1.show();
+                break;
+        }
+        return super.onContextItemSelected(item);
+    }
+    // end context menu
 }

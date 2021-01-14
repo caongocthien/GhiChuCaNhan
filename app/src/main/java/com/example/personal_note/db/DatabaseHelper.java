@@ -270,6 +270,14 @@ public class DatabaseHelper {
         db.close();
         return status;
     }
+    //Xoa Priority
+
+    public long deleteNote(int id) {
+        SQLiteDatabase db = openDB();
+        long status = db.delete("tbl_note", "id=" + id, null);
+        db.close();
+        return status;
+    }
 
     //them user
     public long insertUser(User uesr) {
@@ -316,6 +324,22 @@ public class DatabaseHelper {
         long status = db.update("tbl_priority", priority, "id=?", new String[]{String.valueOf(id)});
         db.close();
         return status;
+    }
+    //Them Note
+    public long updateNote(int id, Note Newnote) {
+        SQLiteDatabase db = openDB();
+        ContentValues note = new ContentValues();
+        note.put("name", Newnote.getName());
+        note.put("date", Newnote.getDate());
+        note.put("plan_date", Newnote.getPlanDate());
+        note.put("id_User", Newnote.getIdUser());
+        note.put("id_Catagory", Newnote.getIdCategory());
+        note.put("id_Status", Newnote.getIdStatus());
+        note.put("id_Priority", Newnote.getIdPriority());
+        long status = db.update("tbl_note", note, "id=?", new String[]{String.valueOf(id)});
+        db.close();
+        return status;
+
     }
 
 
