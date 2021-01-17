@@ -365,5 +365,26 @@ public class DatabaseHelper {
 
     }
 
+    public ArrayList<DashBoard> getDashBoard()
+    {
+        ArrayList<Note> noteArrayList = getNote();
+        ArrayList<Status> statusArrayList = getStatus();
+        ArrayList<DashBoard> dashBoards = new ArrayList<>();
+        for( int i = 0; i<statusArrayList.size(); i++)
+        {
+            Status status = statusArrayList.get(i);
+            int s=0;
+            for (int k =0; k< noteArrayList.size();k++){
+                if(status.getIdStatus() == noteArrayList.get(k).getIdStatus())
+                {
+                    s++;
+                }
+            }
+            dashBoards.add(new DashBoard(status.getNameStatus(),s));
+        }
+        return dashBoards;
+    }
+
+
 
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.personal_note.db.DashBoard;
 import com.example.personal_note.db.DatabaseHelper;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Description;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class HomeActivity extends Fragment {
     DatabaseHelper databaseHelper;
+    ArrayList<DashBoard> dashBoards = new ArrayList<>();
     TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,6 +33,7 @@ public class HomeActivity extends Fragment {
         PieChart pieChart = (PieChart) view.findViewById(R.id.pieChart);
         pieChart.setUsePercentValues(true);
         databaseHelper =new DatabaseHelper(getContext());
+        dashBoards=databaseHelper.getDashBoard();
 
         Description desc = new Description();
 
@@ -43,9 +46,13 @@ public class HomeActivity extends Fragment {
         pieChart.setTransparentCircleRadius(0f);
 
         List<PieEntry> value = new ArrayList<>();
-        value.add(new PieEntry(60f, "Processing"));
-        value.add(new PieEntry(20f, "Pending"));
-        value.add(new PieEntry(20f, "Done"));
+        for(int i = 0; i<dashBoards.size(); i++){
+            DashBoard dashBoard = dashBoards.get(i);
+            value.add(new PieEntry(dashBoard.getCount(), dashBoard.getName()));
+        }
+    //    value.add(new PieEntry(60f, "Processing"));
+     //   value.add(new PieEntry(20f, "Pending"));
+      //  value.add(new PieEntry(20f, "Done"));
 
         PieDataSet pieDataSet = new PieDataSet(value, "TYPE");
 
