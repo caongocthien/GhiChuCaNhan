@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class HomeActivity extends Fragment {
         Description desc = new Description();
 
         desc.setText("Dashboard");
-        desc.setTextSize(20f);
+        desc.setTextSize(100f);
 
         pieChart.setDescription(desc);
 
@@ -59,7 +60,13 @@ public class HomeActivity extends Fragment {
         PieData pieData = new PieData(pieDataSet);
 
         pieChart.setData(pieData);
-        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+
+
+        pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+        pieDataSet.setValueTextSize(20f);
+        pieDataSet.setValueTextColor(Color.RED);
+
+
 
         pieChart.animateXY(1400, 1400);
         return view;

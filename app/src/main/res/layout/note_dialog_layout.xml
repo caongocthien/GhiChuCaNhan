@@ -8,13 +8,14 @@
     tools:context=".fragment.AddCategoryFragment">
 
     <TextView
+        android:textColor="#ff2200"
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_weight="1"
         android:textSize="40sp"
-        android:text="ADD NOTE" />
+        android:text="Add Note" />
 
 
     <EditText
@@ -27,6 +28,7 @@
         android:ems="10"
         android:layout_below="@id/textView"
         android:inputType="textPersonName"
+        android:shadowColor="@color/yellow"
         android:background="@drawable/edittext_background"
         android:hint="Name"  />
 
@@ -34,19 +36,28 @@
         android:id="@+id/SelCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="20dp">
+
         <TextView
+            android:textColor="#0008ff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textSize="20sp" />
+        <TextView
+            android:textColor="#ffffff"
             android:id="@+id/positionCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Select Category..."/>
+
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spnCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
             android:layout_below="@id/edtNoteName"/>
 
@@ -55,23 +66,26 @@
         android:id="@+id/SelSta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="20dp">
         <TextView
+            android:textColor="#0008ff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textSize="20sp" />
+        <TextView
+            android:textColor="#ffffff"
             android:id="@+id/positionSta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-
-
-            android:text="Select Status..."/>
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spnStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="31dp"
-
-
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
             android:layout_below="@id/spnPriority"/>
 
@@ -81,14 +95,21 @@
         android:id="@+id/SelPri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="20dp">
         <TextView
+            android:textColor="#0008ff"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority"
+            android:textSize="20sp" />
+        <TextView
+            android:textColor="#ffffff"
             android:id="@+id/positionPri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-
-            android:text="Select Priority..."/>
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/spnPriority"
@@ -101,34 +122,38 @@
             android:layout_below="@id/spnCategory"/>
 
     </LinearLayout>
-
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
         <TextView
+            android:textColor="#0008ff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plan Date"
+            android:textSize="20sp" />
+        <TextView
+           android:paddingLeft="20dp"
             android:id="@+id/tvDatePick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-
-            android:text="Select plan date..."
+            android:text="Select plane date"
             android:layout_below="@id/SelSta"/>
+
         <TextView
+
             android:id="@+id/tvTimePick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:text=""
 
-            android:text=""/>
+            android:textSize="20sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -140,20 +165,27 @@
 
 
             <android.widget.Button
+                android:backgroundTint="#ff7b00"
+                android:textColor="#ffffff"
                 android:id="@+id/btnAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_background"
-                android:layout_weight="1"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
                 android:text="Add" />
 
             <android.widget.Button
+                android:backgroundTint="#ff7b00"
+                android:textColor="#ffffff"
                 android:id="@+id/btnClose"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/btnAdd"
                 android:background="@drawable/button_background"
-                android:layout_weight="1"
+                android:layout_marginLeft="50dp"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
                 android:text="Close" />
         </LinearLayout>
     </LinearLayout>

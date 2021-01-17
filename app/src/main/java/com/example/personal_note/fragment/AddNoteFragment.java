@@ -117,6 +117,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         //listview
         listView = view.findViewById(R.id.rvNote);
         listView.setAdapter(adapter);
+
         registerForContextMenu(listView);
 
 
@@ -143,6 +144,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         btnAdd = dialog.findViewById(R.id.btnAdd);
         btnClose = dialog.findViewById(R.id.btnClose);
         edtName = dialog.findViewById(R.id.edtNoteName);
+       edtName.setTextColor(Color.WHITE);
 
 
         posCat = dialog.findViewById(R.id.positionCat);
@@ -284,7 +286,8 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
 //                String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
 
                 String name = edtName.getText().toString();
-                int id_user = 1;
+
+                int id_user = 0;
                 String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
                 int id_category = Integer.parseInt(posSta.getText().toString());
                 int id_status = Integer.parseInt(posCat.getText().toString());

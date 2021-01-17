@@ -10,10 +10,13 @@
 
 
     <ListView
+
+        android:textAlignment="center"
         android:id="@+id/rvNote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp">
+        android:background="#88aff2"
+        android:layout_margin="20dp">
 
     </ListView>
 
