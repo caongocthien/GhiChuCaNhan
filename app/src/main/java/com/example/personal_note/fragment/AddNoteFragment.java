@@ -144,7 +144,7 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         btnAdd = dialog.findViewById(R.id.btnAdd);
         btnClose = dialog.findViewById(R.id.btnClose);
         edtName = dialog.findViewById(R.id.edtNoteName);
-       edtName.setTextColor(Color.WHITE);
+       edtName.setTextColor(Color.BLUE);
 
 
         posCat = dialog.findViewById(R.id.positionCat);

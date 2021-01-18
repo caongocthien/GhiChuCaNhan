@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.FSize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +49,17 @@ public class HomeActivity extends Fragment {
         pieChart.setTransparentCircleRadius(0f);
 
         List<PieEntry> value = new ArrayList<>();
+
         for(int i = 0; i<dashBoards.size(); i++){
+
             DashBoard dashBoard = dashBoards.get(i);
+
             value.add(new PieEntry(dashBoard.getCount(), dashBoard.getName()));
+
+
+
         }
+
     //    value.add(new PieEntry(60f, "Processing"));
      //   value.add(new PieEntry(20f, "Pending"));
       //  value.add(new PieEntry(20f, "Done"));
@@ -59,16 +68,20 @@ public class HomeActivity extends Fragment {
 
         PieData pieData = new PieData(pieDataSet);
 
+        pieDataSet.setFormSize(40f);
+
+        pieChart.setEntryLabelTextSize(20f);
+
         pieChart.setData(pieData);
 
-
         pieDataSet.setColors(ColorTemplate.PASTEL_COLORS);
-        pieDataSet.setValueTextSize(20f);
+        pieDataSet.setValueTextSize(30f);
         pieDataSet.setValueTextColor(Color.RED);
 
 
 
         pieChart.animateXY(1400, 1400);
+
         return view;
     }
 

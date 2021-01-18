@@ -77,6 +77,7 @@ public class AddStatusFragment extends Fragment {
 
         //show dialog
         button = view.findViewById(R.id.add);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,11 +89,13 @@ public class AddStatusFragment extends Fragment {
 
         //Hien dialog
         dialog = new Dialog(getContext());
+
         dialog.setContentView(R.layout.status_dialog_layout);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         dialog.setCancelable(false);
         dialog.getWindow().getAttributes().windowAnimations = R.style.Animation_Design_BottomSheetDialog;
         btnAdd = dialog.findViewById(R.id.btnAdd);
+
         btnClose = dialog.findViewById(R.id.btnClose);
 
 
@@ -106,6 +109,7 @@ public class AddStatusFragment extends Fragment {
 
         //Them gia tri vao mang
         lvStatus = view.findViewById(R.id.lvStatus);
+
         edtName = dialog.findViewById(R.id.edtName);
 
 

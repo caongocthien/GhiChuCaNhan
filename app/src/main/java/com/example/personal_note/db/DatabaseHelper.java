@@ -381,6 +381,7 @@ public class DatabaseHelper {
                 }
             }
             dashBoards.add(new DashBoard(status.getNameStatus(),s));
+
         }
         return dashBoards;
     }
