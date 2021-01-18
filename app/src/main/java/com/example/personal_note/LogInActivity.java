@@ -36,6 +36,7 @@ public class LogInActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User u=new User();
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
                 Boolean Chkemailpassword = db.emailpassword(email,password);
@@ -52,7 +53,7 @@ public class LogInActivity extends AppCompatActivity {
                     p.savePreferences("id", String.valueOf(user.getIdUser()));
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Xin chào " + email ,Toast.LENGTH_SHORT).show();
                 }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();}
 
         });

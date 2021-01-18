@@ -3,97 +3,116 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_margin="10dp"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:gravity="center"
     android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgVN"
+            android:layout_width="67dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="70dp"
+            app:srcCompat="@drawable/vn" />
+
+        <ImageView
+            android:id="@+id/imgUS"
+            android:layout_width="69dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="150dp"
+            app:srcCompat="@drawable/us" />
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/editbanner"
-        android:gravity="center"
-        android:textSize="50dp"
-        android:text="@string/SignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:gravity="center"
+        android:text="@string/SignUp"
+        android:textSize="50dp" />
+
     <EditText
         android:id="@+id/edittextuser"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/edittext_background"
         android:hint="@string/EnterEmail"
         android:inputType="textEmailAddress"
-        app:hintEnabled="true"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/edittext_background"
         android:paddingLeft="20dp"
-        />
+        app:hintEnabled="true" />
+
     <EditText
         android:id="@+id/edittextpassword"
-        app:hintEnabled="true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="@string/EnterPassword"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/edittext_background"
         android:paddingLeft="20dp"
+        app:hintEnabled="true"
 
         />
+
     <EditText
         android:id="@+id/edittextconfirmpassword"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
         android:hint="@string/ConfirmPassword"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/edittext_background"
         android:paddingLeft="20dp"
 
 
         />
+
     <EditText
         android:id="@+id/editfirstname"
-        android:hint="First Name"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edittext_background"
-        android:paddingLeft="20dp"
-        />
+        android:hint="@string/FirstName"
+        android:paddingLeft="20dp" />
+
     <EditText
         android:id="@+id/editlastname"
-        android:hint="Last Name"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edittext_background"
-        android:paddingLeft="20dp"
-        />
+        android:hint="@string/LastName"
+        android:paddingLeft="20dp" />
+
     <CheckBox
         android:id="@+id/bntremember"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Remember Me"
         android:layout_below="@id/edittextconfirmpassword"
-        />
-        <android.widget.Button
-            android:id="@+id/bntsignup"
-            android:backgroundTint="@color/yellow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/SignUp"
-            android:background="@drawable/button_background"/>
+        android:hint="Remember Me" />
 
-        <android.widget.Button
-            android:id="@+id/bntsignin"
-            android:backgroundTint="@color/yellow"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="@string/SignIn"
-            android:background="@drawable/button_background"
-            />
+    <android.widget.Button
+        android:id="@+id/bntsignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/yellow"
+        android:text="@string/SignUp" />
+
+    <android.widget.Button
+        android:id="@+id/bntsignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="@color/yellow"
+        android:text="@string/SignIn" />
 
 
 </LinearLayout>

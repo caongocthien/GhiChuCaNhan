@@ -31,7 +31,18 @@
     <string name="SignUp">Sign Up</string>
     <string name="EnterEmail">Enter your email</string>
     <string name="EnterPassword">Enter your password (more than 8 words)</string>
-    <string name="ConfirmPassword">Confirm your number</string>
+    <string name="ConfirmPassword">Confirm Your Password</string>
     <string name="SignIn">Sign In</string>
-    <string name="Exit">Exit</string>
+    <string name="FirstName">First Name</string>
+    <string name="LastName">Last Name</string>
+    <string name="AddStatus">ADD STATUS</string>
+    <string name="Name">Name</string>
+    <string name="Back">Back</string>
+    <string name="Close">Close</string>
+    <string name="Add">Add</string>
+    <string name="EnterYourLastName">  Enter Your Last Name</string>
+    <string name="EnterYourFirstName"> Enter Your First Name</string>
+    <string name="EditProfile"> Edit Profile</string>
+    <string name="Edit"> Edit Profile</string>
+
 </resources>

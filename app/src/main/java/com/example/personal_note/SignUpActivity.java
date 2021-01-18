@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.personal_note.adapter.CategoryAdapter;
@@ -21,6 +23,7 @@ import com.example.personal_note.db.User;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class    SignUpActivity extends AppCompatActivity {
 
@@ -29,7 +32,9 @@ public class    SignUpActivity extends AppCompatActivity {
     Button b1,b2;
     DatabaseHelper databaseHelper;
     ArrayList<User> arrayList;
+    ImageView imgVN,imgUS;
     //ArrayAdapter arrayAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,8 @@ public class    SignUpActivity extends AppCompatActivity {
         e5 = (EditText)findViewById(R.id.edittextconfirmpassword);
         b1 = (Button)findViewById(R.id.bntsignup);
         b2 = (Button)findViewById(R.id.bntsignin);
+        imgUS=(ImageView)findViewById(R.id.imgUS);
+        imgVN=(ImageView)findViewById(R.id.imgVN);
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +63,18 @@ public class    SignUpActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        imgVN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              ChangeLanguages("vi");
+            }
+        });;
+        imgUS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChangeLanguages("en");
+            }
+        });;
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,25 +83,30 @@ public class    SignUpActivity extends AppCompatActivity {
                 String s3 = e3.getText().toString();
                 String s4 = e4.getText().toString();
                 String s5 = e5.getText().toString();
-                if(s1.trim().equals("")||s2.trim().equals("")||s3.trim().equals("")) {
-                    Toast.makeText(getApplicationContext(),"Thiếu thông tin, hãy kiểm tra lại!",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    if(s2.equals(s5)){
-                        Boolean chkemail = db.chkemail(s1);
-                        if (chkemail==true){
+                if (s1.trim().equals("") || s2.trim().equals("") || s3.trim().equals("") || s4.trim().equals("") || s5.trim().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Thiếu thông tin, hãy kiểm tra lại!", Toast.LENGTH_SHORT).show();
 
-                            User user = new User(s1,s2,s3,s4);
-                            if (databaseHelper.insertUser(user)>0) {
+                } else {
+                    if (s2.length() < 8 && s5.length() < 8) {
+                        Toast.makeText(getApplicationContext(), "Mật khẩu phải đủ 8 ký tự", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (s2.equals(s5)) {
+                            Boolean chkemail = db.chkemail(s1);
+                            if (chkemail == true) {
+                                User user = new User(s1, s2, s3, s4);
+                                if (databaseHelper.insertUser(user) > 0) {
 //                                arrayAdapter.clear();
-                                arrayList.addAll(databaseHelper.getUser());
+                                    arrayList.addAll(databaseHelper.getUser());
 //                                arrayAdapter.notifyDataSetChanged();
-                                Intent i = new Intent(SignUpActivity.this,LogInActivity.class);
-                                startActivity(i);
-                                Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                            }
-                        }else Toast.makeText(getApplicationContext(),"Tài khoản đã tồn tại",Toast.LENGTH_SHORT).show();
-                    } else Toast.makeText(getApplicationContext(),"Mật khẩu không đúng",Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(SignUpActivity.this, LogInActivity.class);
+                                    startActivity(i);
+                                    Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                }
+                            } else
+                                Toast.makeText(getApplicationContext(), "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getApplicationContext(), "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -94,7 +118,7 @@ public class    SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s .length() <8){
+                if (s.length() <8){
                     e2.setError("Nhập  trên 8 ký tự");
                 }else {
                     e2.setError(null);
@@ -126,5 +150,14 @@ public class    SignUpActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void ChangeLanguages(String Language)
+    {
+        Locale locale = new Locale(Language);
+        Configuration config = new Configuration();
+        config.locale=locale;
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        Intent intent=new Intent(SignUpActivity.this,SignUpActivity.class);
+        startActivity(intent);
     }
 }

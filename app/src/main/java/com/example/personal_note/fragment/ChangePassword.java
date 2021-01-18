@@ -60,13 +60,26 @@ public class ChangePassword extends Fragment {
                 } else if(!newPass.equals(againPass)) {
                     Toast.makeText(getContext(), "Nhap lai mat khau khong dung", Toast.LENGTH_SHORT).show();
                 } else {
-                    User user = new User(email, newPass, firstname, lastname);
-                    long i = db.updatePass(id, user);
-
-                        Toast.makeText(getContext(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                        startActivity(intent);
-
+                    if(newPass.length()>=8)
+                    {
+                        if(newPass.equals(password))
+                        {
+                            Toast.makeText(getContext(), "Mat khau moi trung mat khau cu,vui long chon mat khau khac ", Toast.LENGTH_SHORT).show();
+                            txtnewPass.setText("");
+                            txtagainPass.setText("");
+                        }
+                        else{
+                            User user = new User(email, newPass, firstname, lastname);
+                            long i = db.updatePass(id, user);
+                            Toast.makeText(getContext(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                    else
+                        Toast.makeText(getContext(), "Mat Khau moi phai du 8 ky tu ", Toast.LENGTH_SHORT).show();
+                        txtnewPass.setText("");
+                        txtagainPass.setText("");
                 }
 
             }

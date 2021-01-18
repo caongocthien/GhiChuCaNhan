@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/editprofile"
-        android:text="Edit Profile"
+        android:text="@string/EditProfile"
         android:textSize="30dp"
         android:textStyle="bold"
         android:gravity="center"
@@ -20,7 +20,7 @@
         />
     <EditText
         android:id="@+id/edittextfistname"
-        android:hint="Enter your fist name"
+        android:hint="@string/EnterYourFirstName"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -30,16 +30,7 @@
         />
     <EditText
         android:id="@+id/edittextlastname"
-        android:hint="Enter your last name"
-        android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_height="45dp"
-        android:background="@drawable/edittext_background"
-        android:paddingLeft="20dp"
-        />
-    <EditText
-        android:id="@+id/edittextemail"
-        android:hint="Confirm your email"
+        android:hint="@string/EnterYourLastName"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_height="45dp"
@@ -54,7 +45,7 @@
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
         <android.widget.Button
-            android:text="Change"
+            android:text="@string/Edit"
             android:id="@+id/btnChange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
-            android:text="Home" />
+            android:text="@string/btnHome" />
     </LinearLayout>
 
 </LinearLayout>

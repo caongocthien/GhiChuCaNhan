@@ -145,6 +145,20 @@ public class DatabaseHelper {
         return null;
 
     }
+    public String getIdUser(int id){
+        SQLiteDatabase db = openDB();
+        String sql = "select * from tbl_user where id =  "+ id;
+        Cursor cursor = db.rawQuery(sql, null);
+        String name1;
+        while (cursor.moveToNext()) {
+            name1 = cursor.getString(1);
+            return name1;
+        }
+
+        return null;
+
+    }
+
 
     //get Note
     public ArrayList<Note> getNote() {
@@ -411,26 +425,30 @@ public class DatabaseHelper {
         Cursor cursor=db.rawQuery(sqlcheck,new String[]{email,password});
         if(cursor.getCount()>0) return true;
         else return false;
-
-
     }
 
     public ArrayList<DashBoard> getDashBoard()
     {
         ArrayList<Note> noteArrayList = getNote();
         ArrayList<Status> statusArrayList = getStatus();
+        ArrayList<User> statusUser = getUser();
         ArrayList<DashBoard> dashBoards = new ArrayList<>();
         for( int i = 0; i<statusArrayList.size(); i++)
         {
-            Status status = statusArrayList.get(i);
-            int s=0;
-            for (int k =0; k< noteArrayList.size();k++){
-                if(status.getIdStatus() == noteArrayList.get(k).getIdStatus())
-                {
-                    s++;
+            for(int j = 0; j<statusUser.size(); j++)
+            {
+                Status status = statusArrayList.get(i);
+                User user = statusUser.get(j);
+                int s=0;
+                for (int k =0; k< noteArrayList.size();k++){
+                    if(status.getIdStatus() == noteArrayList.get(k).getIdStatus()&& user.getIdUser() == noteArrayList.get(k).getIdUser())
+                    {
+                        s++;
+                    }
                 }
+                dashBoards.add(new DashBoard(status.getNameStatus(),s));
             }
-            dashBoards.add(new DashBoard(status.getNameStatus(),s));
+
 
         }
         return dashBoards;

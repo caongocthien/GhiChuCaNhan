@@ -56,8 +56,6 @@ public class HomeActivity extends Fragment {
 
             value.add(new PieEntry(dashBoard.getCount(), dashBoard.getName()));
 
-
-
         }
 
     //    value.add(new PieEntry(60f, "Processing"));

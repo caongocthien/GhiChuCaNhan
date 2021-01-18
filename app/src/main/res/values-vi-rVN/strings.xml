@@ -34,6 +34,15 @@
     <string name="EnterPassword">Nhập mật khẩu của bạn (trên 8 ký tự)</string>
     <string name="ConfirmPassword">Xác nhận mật khẩu</string>
     <string name="SignIn">Đăng Nhập</string>
-    <string name="Exit">Trở Về</string>
-
+    <string name="FirstName">Tên</string>
+    <string name="LastName">Họ</string>
+    <string name="AddStatus">Thêm Trạng Thái</string>
+    <string name="Name">Tên</string>
+    <string name="Back">Trở Về</string>
+    <string name="Close">Đóng</string>
+    <string name="Add">Thêm</string>
+    <string name="EnterYourLastName">  Nhập họ của bạn</string>
+    <string name="EnterYourFirstName">  Nhập tên của bạn</string>
+    <string name="EditProfile"> Sửa thông tin đăng nhập</string>
+    <string name="Edit"> Sửa thông tin </string>
 </resources>
