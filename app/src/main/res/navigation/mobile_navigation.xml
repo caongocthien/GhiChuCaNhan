@@ -44,4 +44,9 @@
         android:name="com.example.personal_note.fragment.ChangePassword"
         android:label="Đổi mật khẩu"
         tools:layout="@layout/activity_changepassword" />
+
+    <activity
+        android:id="@id/nav_logOut"
+        android:name="com.example.personal_note.LogInActivity"
+        tools:layout="@layout/activity_log_in"/>
 </navigation>

@@ -14,18 +14,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.personal_note.db.DatabaseHelper;
+import com.example.personal_note.db.User;
 
 public class LogInActivity extends AppCompatActivity {
     EditText e1,e2,e3;
     TextView textView,tv1;
     Button b1,b2;
     DatabaseHelper db;
-
+    SharePreferences p;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         db = new DatabaseHelper(this);
+        p = new SharePreferences(this);
         e1 =(EditText)findViewById(R.id.txtemail);
         e2 = (EditText)findViewById(R.id.txtpassword);
         tv1 = (TextView)findViewById(R.id.textView2) ;
@@ -38,10 +41,15 @@ public class LogInActivity extends AppCompatActivity {
                 Boolean Chkemailpassword = db.emailpassword(email,password);
   //            textView = findViewById(R.id.textG);
    //           textView.setText("ABC");
-
                 if (Chkemailpassword==true){
                     Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
                     i.putExtra("email",e1.getText().toString());
+                    user = db.getUsers(email);
+                    p.savePreferences("firstname", user.getFirstnameUser());
+                    p.savePreferences("lastname", user.getLastnameUser());
+                    p.savePreferences("email", user.getEmailUser());
+                    p.savePreferences("pass", password);
+                    p.savePreferences("id", String.valueOf(user.getIdUser()));
                     startActivity(i);
                     Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                     Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();

@@ -190,6 +190,29 @@ public class DatabaseHelper {
         return arrayList;
     }
 
+    public User getUsers(String emailUser) {
+        SQLiteDatabase db = openDB();
+        User user = new User();
+
+        String sql = "select * from tbl_user where email like '" + emailUser + "'";
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                Integer id = cursor.getInt(0);
+                String firstname = cursor.getString(1);
+                String lastname = cursor.getString(2);
+                String email = cursor.getString(3);
+                String password = cursor.getString(4);
+                user = new User(id, email, password,firstname, lastname);
+            }
+        }
+        db.close();
+        return user;
+    }
+
+
+
+
 
     //Them category
     public long insertCategory(Category cate) {
@@ -303,6 +326,8 @@ public class DatabaseHelper {
         return status;
     }
 
+
+
     //Update Status
     public long updateStatus(int id, Status newSta) {
         ContentValues status = new ContentValues();
@@ -341,7 +366,32 @@ public class DatabaseHelper {
 
     }
 
+    public long updateUser(int id,User newUs)
+    {
+        ContentValues st=new ContentValues();
+        st.put("firstname",newUs.getFirstnameUser());
+        st.put("lastname",newUs.getLastnameUser());
+        st.put("email",newUs.getEmailUser());
+        st.put("password",newUs.getPasswordUser());
+        SQLiteDatabase db=openDB();
+        long statuss=db.update("tbl_user",st,"id=?",new String[]{String.valueOf(id)});
+        db.close();
+        return statuss;
+    }
 
+
+    //Update Category
+    public long updatePass(int id, User newUs) {
+        ContentValues st=new ContentValues();
+        st.put("firstname",newUs.getFirstnameUser());
+        st.put("lastname",newUs.getLastnameUser());
+        st.put("email",newUs.getEmailUser());
+        st.put("password",newUs.getPasswordUser());
+        SQLiteDatabase db=openDB();
+        long statuss=db.update("tbl_user",st,"id=?",new String[]{String.valueOf(id)});
+        db.close();
+        return statuss;
+    }
     //get Note
 
 

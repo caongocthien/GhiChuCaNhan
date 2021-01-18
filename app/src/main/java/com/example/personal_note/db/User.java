@@ -27,7 +27,9 @@ public class User  implements Serializable {
         this.passwordUser = passwordUser;
     }
 
-
+    public User(String emailUser) {
+        this.emailUser = emailUser;
+    }
 
     public int getIdUser() {
         return idUser;
