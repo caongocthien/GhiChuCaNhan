@@ -435,13 +435,11 @@ public class DatabaseHelper {
         ArrayList<DashBoard> dashBoards = new ArrayList<>();
         for( int i = 0; i<statusArrayList.size(); i++)
         {
-            for(int j = 0; j<statusUser.size(); j++)
-            {
                 Status status = statusArrayList.get(i);
-                User user = statusUser.get(j);
+
                 int s=0;
                 for (int k =0; k< noteArrayList.size();k++){
-                    if(status.getIdStatus() == noteArrayList.get(k).getIdStatus()&& user.getIdUser() == noteArrayList.get(k).getIdUser())
+                    if(status.getIdStatus() == noteArrayList.get(k).getIdStatus())
                     {
                         s++;
                     }
@@ -449,8 +447,6 @@ public class DatabaseHelper {
                 dashBoards.add(new DashBoard(status.getNameStatus(),s));
             }
 
-
-        }
         return dashBoards;
     }
 

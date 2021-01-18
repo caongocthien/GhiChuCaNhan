@@ -18,6 +18,7 @@ import com.example.personal_note.HomeActivity;
 import com.example.personal_note.NavigationActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.SharePreferences;
+import com.example.personal_note.db.DashBoard;
 import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.User;
 
@@ -59,25 +60,18 @@ public class EditProfile extends Fragment {
                 String lastname = txtlastname.getText().toString();
 
                     User user = new User(email,password,firstname,lastname);
-                    long i = db.updatePass(id, user);
+                    long i = db.updateUser(id, user);
                     Toast.makeText(getContext(), "Thay doi thong tin thanh cong", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                startActivity(intent);
                 }
         });
-
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), NavigationActivity.class);
                 startActivity(intent);
-
-
-
-
-
             }
         });
-
     }
 }

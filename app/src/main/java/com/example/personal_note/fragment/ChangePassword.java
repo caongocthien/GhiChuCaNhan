@@ -91,10 +91,6 @@ public class ChangePassword extends Fragment {
                     Intent intent = new Intent(getActivity(), NavigationActivity.class);
                     startActivity(intent);
 
-
-
-
-
                 }
             });
 
