@@ -42,6 +42,7 @@ import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.Note;
 import com.example.personal_note.db.Priority;
 import com.example.personal_note.db.Status;
+import com.example.personal_note.db.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
@@ -68,7 +69,6 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
 
 
     ListView listView;
-
 
 
     private DatePickerDialog.OnDateSetListener dataSetListenner;
@@ -145,7 +145,6 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
         btnClose = dialog.findViewById(R.id.btnClose);
         edtName = dialog.findViewById(R.id.edtNoteName);
        edtName.setTextColor(Color.BLUE);
-
 
         posCat = dialog.findViewById(R.id.positionCat);
         posSta = dialog.findViewById(R.id.positionSta);
@@ -283,11 +282,9 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
             @Override
             public void onClick(View v) {
                 //code
-//                String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
-
+                User user= new User();
+                int id_user = user.getIdUser();
                 String name = edtName.getText().toString();
-
-                int id_user = 0;
                 String planDate = tvDatePick.getText().toString() + " " + tvTimePick.getText().toString();
                 int id_category = Integer.parseInt(posSta.getText().toString());
                 int id_status = Integer.parseInt(posCat.getText().toString());

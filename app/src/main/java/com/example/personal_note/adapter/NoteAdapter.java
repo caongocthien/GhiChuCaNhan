@@ -42,16 +42,12 @@ public class NoteAdapter extends ArrayAdapter<Note> {
             TextView tvNotePri = convertView.findViewById(R.id.tvNotePriority);
             TextView tvNotePlanDate = convertView.findViewById(R.id.tvNotePlanDate);
 
-
-
-
+            
             db= new DatabaseHelper(getContext());
 
             String catName = db.getNameCategory(note.getIdCategory());
             String staName = db.getNameStatus(note.getIdStatus());
             String priName = db.getNamePriority(note.getIdPriority());
-
-
             tvNameNote.setText(note.getName());
             tvNoteCate.setText(catName);
             tvNoteSta.setText(staName);

@@ -27,6 +27,7 @@
             android:title="Note" />
         <item
             android:id="@+id/nav_account"
+            android:icon="@drawable/ic_action_account"
             android:title="Account" />
         <item
             android:id="@+id/nav_editProfile"
@@ -38,7 +39,7 @@
             android:title="Change Password" />
         <item
             android:id="@+id/nav_logOut"
-            android:icon="@drawable/ic_action_changepass"
+            android:icon="@drawable/ic_action_logout"
             android:title="Log Out" />
     </group>
 </menu>

@@ -62,7 +62,7 @@
 
         <android.widget.Button
             android:id="@+id/btnExit"
-            android:text="@string/Exit"
+            android:text="@string/Back"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

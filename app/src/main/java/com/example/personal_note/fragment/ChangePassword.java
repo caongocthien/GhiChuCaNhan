@@ -62,7 +62,6 @@ public class ChangePassword extends Fragment {
                 } else {
                     User user = new User(email, newPass, firstname, lastname);
                     long i = db.updatePass(id, user);
-                    Toast.makeText(getContext(), "" + id, Toast.LENGTH_SHORT).show();
 
                         Toast.makeText(getContext(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(), NavigationActivity.class);

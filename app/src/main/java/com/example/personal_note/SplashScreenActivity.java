@@ -17,7 +17,6 @@ import com.example.personal_note.fragment.AddNoteFragment;
 
 public class SplashScreenActivity extends AppCompatActivity {
     ImageView myimg;
-    TextView mytv;
     Intent homeAct;
     Animation myanim;
 
@@ -28,19 +27,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         myimg = (ImageView) findViewById(R.id.noteImg);
         myanim = AnimationUtils.loadAnimation(this, R.anim.myanim);
         myimg.startAnimation(myanim);
-//        mytv.startAnimation(myanim);
-
-
-//        homeAct = new Intent(this, manager.getClass());
+        homeAct = new Intent(SplashScreenActivity.this, SignUpActivity.class);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                AddNoteFragment fragment = new AddNoteFragment();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().add(R.id.notefrag,fragment).commit();
-
-
-//                startActivity(homeAct);
+                //AddNoteFragment fragment = new AddNoteFragment();
+                //FragmentManager manager = getSupportFragmentManager();
+                //manager.beginTransaction().add(R.id.notefrag,fragment).commit();
+                startActivity(homeAct);
                 finish();
             }
         }, 3000);

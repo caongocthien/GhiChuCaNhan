@@ -34,12 +34,11 @@ public class NavigationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
         Intent intent=getIntent();
-//        String email=intent.getStringExtra("email");
-//        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+        String email=intent.getStringExtra("email");
+       Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
-        t2 =findViewById(R.id.textView2);
-
+        t2=findViewById(R.id.textView2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

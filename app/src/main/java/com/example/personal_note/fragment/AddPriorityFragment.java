@@ -16,16 +16,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.personal_note.R;
-import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.adapter.PriorityAdapter;
-import com.example.personal_note.db.Category;
 import com.example.personal_note.db.DatabaseHelper;
 import com.example.personal_note.db.Priority;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -47,11 +44,9 @@ public class AddPriorityFragment extends Fragment {
     DatabaseHelper databaseHelper;
     PriorityAdapter adapter;
 
-
     public AddPriorityFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

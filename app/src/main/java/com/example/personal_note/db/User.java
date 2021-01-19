@@ -14,7 +14,6 @@ public class User  implements Serializable {
         this.lastnameUser = lastnameUser;
         this.emailUser = emailUser;
         this.passwordUser = passwordUser;
-
     }
 
     public User() {
@@ -38,11 +37,22 @@ public class User  implements Serializable {
     public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
-    public String getFirstnameUser() {return firstnameUser;}
-    public void setFirstnameUser(String firstnameUser){this.firstnameUser = firstnameUser;}
 
-    public String getLastnameUser(){return lastnameUser;}
-    public void setLastnameUser(String lastnameUser){this.lastnameUser = lastnameUser;}
+    public String getFirstnameUser() {
+        return firstnameUser;
+    }
+
+    public void setFirstnameUser(String firstnameUser) {
+        this.firstnameUser = firstnameUser;
+    }
+
+    public String getLastnameUser() {
+        return lastnameUser;
+    }
+
+    public void setLastnameUser(String lastnameUser) {
+        this.lastnameUser = lastnameUser;
+    }
 
     public String getEmailUser() {
         return emailUser;
