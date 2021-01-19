@@ -56,14 +56,22 @@ public class EditProfile extends Fragment {
         btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstname = txtfirstname.getText().toString();
+               String firstname = txtfirstname.getText().toString();
                 String lastname = txtlastname.getText().toString();
-
-                    User user = new User(email,password,firstname,lastname);
-                    long i = db.updateUser(id, user);
-                    Toast.makeText(getContext(), "Thay doi thong tin thanh cong", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                startActivity(intent);
+                if(firstname.trim().equals("")||lastname.trim().equals(""))
+                    {
+                        Toast.makeText(getContext(), "Thieu thong tin", Toast.LENGTH_SHORT).show();
+                    }
+                else
+                    {
+                        User user = new User(email,password,firstname,lastname);
+                        long i = db.updateUser(id, user);
+                        Toast.makeText(getContext(), "Thay doi thong tin thanh cong", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                        startActivity(intent);
+                        p.savePreferences("firstname",firstname);
+                       p.savePreferences("lastname",lastname);
+                    }
                 }
         });
         btnHome.setOnClickListener(new View.OnClickListener() {

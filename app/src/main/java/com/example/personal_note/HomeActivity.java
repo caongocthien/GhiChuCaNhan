@@ -56,14 +56,17 @@ public class HomeActivity extends Fragment {
 
             value.add(new PieEntry(dashBoard.getCount(), dashBoard.getName()));
 
+
         }
+
 
     //    value.add(new PieEntry(60f, "Processing"));
      //   value.add(new PieEntry(20f, "Pending"));
       //  value.add(new PieEntry(20f, "Done"));
+        pieChart.setEntryLabelTextSize(20f);
 
         PieDataSet pieDataSet = new PieDataSet(value, "TYPE");
-
+        pieDataSet.setFormSize(40f);
         PieData pieData = new PieData(pieDataSet);
 
         pieDataSet.setFormSize(40f);

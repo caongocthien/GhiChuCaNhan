@@ -323,7 +323,6 @@ public class DatabaseHelper {
         user.put("password", uesr.getPasswordUser());
         user.put("firstname",uesr.getFirstnameUser());
         user.put("lastname",uesr.getLastnameUser());
-        db.insert("tbl_user", null, user);
         long adduser = db.insert("tbl_user", null, user);
         db.close();
         return adduser;

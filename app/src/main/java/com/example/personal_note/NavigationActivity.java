@@ -38,6 +38,7 @@ public class NavigationActivity extends AppCompatActivity {
        Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
+        t2=findViewById(R.id.textView2);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

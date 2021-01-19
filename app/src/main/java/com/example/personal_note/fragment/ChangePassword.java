@@ -74,6 +74,7 @@ public class ChangePassword extends Fragment {
                             Toast.makeText(getContext(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getActivity(), NavigationActivity.class);
                             startActivity(intent);
+                            p.savePreferences("password",newPass);
                         }
                     }
                     else
