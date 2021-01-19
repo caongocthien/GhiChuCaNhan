@@ -3,6 +3,7 @@ package com.example.personal_note.fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.personal_note.NavigationActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.PriorityAdapter;
 import com.example.personal_note.db.DatabaseHelper;
@@ -124,6 +126,8 @@ public class AddPriorityFragment extends Fragment {
                     priorityArrayList.addAll(databaseHelper.getPriority());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                    startActivity(intent);
                 }
                 dialog.dismiss();
 

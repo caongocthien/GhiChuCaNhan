@@ -35,7 +35,7 @@ public class NavigationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_navigation);
         Intent intent=getIntent();
         String email=intent.getStringExtra("email");
-       Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+
         databaseHelper =new DatabaseHelper(this);
         databaseHelper.createTable();
         t2=findViewById(R.id.textView2);

@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.icu.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.example.personal_note.NavigationActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.CatagorySpinnerAdapter;
 import com.example.personal_note.adapter.CategoryAdapter;
@@ -301,6 +303,8 @@ public class AddNoteFragment extends Fragment implements TimePickerDialog.OnTime
                     noteArrayList.addAll(databaseHelper.getNote());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                    startActivity(intent);
                 }
                 Toast.makeText(getContext(), planDate, Toast.LENGTH_SHORT).show();
                 dialog.dismiss();

@@ -26,6 +26,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.personal_note.HomeActivity;
+import com.example.personal_note.NavigationActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.db.Category;
@@ -132,6 +133,8 @@ public class AddCategoryFragment extends Fragment {
                     categoryArrayList.addAll(databaseHelper.getCategory());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                    startActivity(intent);
                 }
                 dialog.dismiss();
             }

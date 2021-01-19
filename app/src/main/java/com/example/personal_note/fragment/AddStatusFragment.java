@@ -3,11 +3,14 @@ package com.example.personal_note.fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -22,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.personal_note.NavigationActivity;
 import com.example.personal_note.R;
 import com.example.personal_note.adapter.CategoryAdapter;
 import com.example.personal_note.adapter.StatusAdapter;
@@ -38,7 +42,7 @@ import java.util.Date;
 
 
 public class AddStatusFragment extends Fragment {
-    Button btnAdd, btnClose,bai2;
+    Button btnAdd, btnClose;
     Dialog dialog;
     FloatingActionButton button;
     EditText edtName;
@@ -129,7 +133,8 @@ public class AddStatusFragment extends Fragment {
                     statusArrayList.addAll(databaseHelper.getStatus());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getContext(), "Them thanh cong", Toast.LENGTH_SHORT).show();
-
+                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                    startActivity(intent);
                 }
                 dialog.dismiss();
 

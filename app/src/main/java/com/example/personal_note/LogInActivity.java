@@ -36,25 +36,46 @@ public class LogInActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User u=new User();
                 String email = e1.getText().toString();
                 String password = e2.getText().toString();
                 Boolean Chkemailpassword = db.emailpassword(email,password);
-  //            textView = findViewById(R.id.textG);
-   //           textView.setText("ABC");
-                if (Chkemailpassword==true){
-                    Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
-                    i.putExtra("email",e1.getText().toString());
-                    user = db.getUsers(email);
-                    p.savePreferences("firstname", user.getFirstnameUser());
-                    p.savePreferences("lastname", user.getLastnameUser());
-                    p.savePreferences("email", user.getEmailUser());
-                    p.savePreferences("pass", password);
-                    p.savePreferences("id", String.valueOf(user.getIdUser()));
-                    startActivity(i);
-                    Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(),"Đã đăng nhập " + email ,Toast.LENGTH_SHORT).show();
-                }else Toast.makeText(getApplicationContext(),"Đăng nhập thất bại, kiểm tra lại thông tin",Toast.LENGTH_SHORT).show();}
-
+                if(email.trim().equals("")&&password.trim().equals("")){
+                    Toast.makeText(getApplicationContext(),"Vui Lòng Nhập Email và Password",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                        { if(email.trim().equals("")){
+                            Toast.makeText(getApplicationContext(),"Chưa Nhập Email",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            { if(password.trim().equals(""))
+                            {
+                                Toast.makeText(getApplicationContext(),"Chưa Nhập Password",Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                if (Chkemailpassword==true)
+                                {
+                                    Intent i = new Intent(LogInActivity.this,NavigationActivity.class);
+                                    i.putExtra("email",e1.getText().toString());
+                                    user = db.getUsers(email);
+                                    p.savePreferences("firstname", user.getFirstnameUser());
+                                    p.savePreferences("lastname", user.getLastnameUser());
+                                    p.savePreferences("email", user.getEmailUser());
+                                    p.savePreferences("pass", password);
+                                    p.savePreferences("id", String.valueOf(user.getIdUser()));
+                                    startActivity(i);
+                                    Toast.makeText(getApplicationContext(),"Đăng Nhập Thành Công",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"Xin chào " + email ,Toast.LENGTH_SHORT).show();
+                                }else Toast.makeText(getApplicationContext(),"Đăng Nhập Thất Bại, Kiểm Tra Lại Thông Tin",Toast.LENGTH_SHORT).show();
+                                e2.setText("");
+                                e1.setText("");
+                            }
+                            }
+                        }
+                        }
+            }
         });
         b2 = (Button)findViewById(R.id.btnExit);
         b2.setOnClickListener(new View.OnClickListener() {

@@ -55,21 +55,40 @@ public class ChangePassword extends Fragment {
                 String pass = txtcurrentPass.getText().toString();
                 String newPass = txtnewPass.getText().toString();
                 String againPass = txtagainPass.getText().toString();
-                if(!pass.equals(password)) {
-                    Toast.makeText(getContext(), "Mat khau khong dung", Toast.LENGTH_SHORT).show();
-                } else if(!newPass.equals(againPass)) {
-                    Toast.makeText(getContext(), "Nhap lai mat khau khong dung", Toast.LENGTH_SHORT).show();
-                } else {
-                    User user = new User(email, newPass, firstname, lastname);
-                    long i = db.updatePass(id, user);
-
-                        Toast.makeText(getContext(), "Thay doi mat khau thanh cong", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                        startActivity(intent);
-
+                if(pass.trim().equals("")||newPass.trim().equals("")||againPass.trim().equals("")){
+                    Toast.makeText(getContext(),"Nhập Thiếu Thông Tin , Vui Lòng Nhập Đầy Đủ ",Toast.LENGTH_SHORT).show();
                 }
-
-            }
+                else
+                {
+                        if(!pass.equals(password)) {
+                            Toast.makeText(getContext(), "Sai Mật Khẩu,Vui Lòng Kiểm Tra Lại", Toast.LENGTH_SHORT).show();
+                        } else if(!newPass.equals(againPass)) {
+                            Toast.makeText(getContext(), "Nhập Lại Mật Khẩu Mới Không Khớp", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if(newPass.length()>=8)
+                            {
+                                if(newPass.equals(password))
+                                {
+                                    Toast.makeText(getContext(), "Mật Khẩu Mới Trùng Mật Khẩu Cũ,Vui Lòng Chọn Mật Khẩu Khác ", Toast.LENGTH_SHORT).show();
+                                    txtnewPass.setText("");
+                                    txtagainPass.setText("");
+                                }
+                                else{
+                                    User user = new User(email, newPass, firstname, lastname);
+                                    long i = db.updatePass(id, user);
+                                    Toast.makeText(getContext(), "Thay Đổi Mật Khẩu Thành Công", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                                    startActivity(intent);
+                                    p.savePreferences("password",newPass);
+                                }
+                            }
+                            else
+                                Toast.makeText(getContext(), "Mật Khẩu Mới Phải Đủ 8 Ký Tự ", Toast.LENGTH_SHORT).show();
+                            txtnewPass.setText("");
+                            txtagainPass.setText("");
+                        }
+                    }
+                    }
         });
 
             btnHome.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +96,6 @@ public class ChangePassword extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), NavigationActivity.class);
                     startActivity(intent);
-
-
-
-
 
                 }
             });

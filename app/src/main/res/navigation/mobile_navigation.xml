@@ -5,46 +5,46 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
-
-
     <fragment
-
         android:id="@+id/nav_home"
         android:name="com.example.personal_note.HomeActivity"
         android:label="@string/menu_home"
         tools:layout="@layout/activity_home" />
-
     <fragment
         android:id="@+id/nav_category"
         android:name="com.example.personal_note.fragment.AddCategoryFragment"
-        android:label="Danh mục"
+        android:label="@string/Category"
         tools:layout="@layout/fragment_add_category" />
     <fragment
         android:id="@+id/nav_priority"
         android:name="com.example.personal_note.fragment.AddPriorityFragment"
-        android:label="Mức độ ưu tiên"
+        android:label="@string/Priority"
         tools:layout="@layout/fragment_add_priority" />
     <fragment
         android:id="@+id/nav_status"
         android:name="com.example.personal_note.fragment.AddStatusFragment"
-        android:label="Trạng thái"
+        android:label="@string/Status"
         tools:layout="@layout/fragment_add_status" />
     <fragment
         android:id="@+id/nav_note"
         android:name="com.example.personal_note.fragment.AddNoteFragment"
-        android:label="Ghi chú"
+        android:label="@string/Note"
         tools:layout="@layout/fragment_add_note" />
+    <fragment
+        android:id="@+id/nav_account"
+        android:name="com.example.personal_note.fragment.AccountFragment"
+        android:label="@string/Info"
+        tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/nav_editProfile"
         android:name="com.example.personal_note.fragment.EditProfile"
-        android:label="Thay đổi thông tin"
+        android:label="@string/EditProfile"
         tools:layout="@layout/activity_edit_profile" />
     <fragment
         android:id="@+id/nav_changePass"
         android:name="com.example.personal_note.fragment.ChangePassword"
-        android:label="Đổi mật khẩu"
+        android:label="@string/Change"
         tools:layout="@layout/activity_changepassword" />
-
     <activity
         android:id="@id/nav_logOut"
         android:name="com.example.personal_note.LogInActivity"

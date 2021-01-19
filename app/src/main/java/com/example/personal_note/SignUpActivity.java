@@ -84,31 +84,31 @@ public class    SignUpActivity extends AppCompatActivity {
                 String s4 = e4.getText().toString();
                 String s5 = e5.getText().toString();
                 if (s1.trim().equals("") || s2.trim().equals("") || s3.trim().equals("") || s4.trim().equals("") || s5.trim().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Thiếu thông tin, hãy kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Thiếu Thông Tin, Hãy Kiểm Tra Lại!", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    if (s2.length() < 8 && s5.length() < 8) {
-                        Toast.makeText(getApplicationContext(), "Mật khẩu phải đủ 8 ký tự", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (s2.equals(s5)) {
-                            Boolean chkemail = db.chkemail(s1);
-                            if (chkemail == true) {
-                                User user = new User(s1, s2, s3, s4);
-                                if (databaseHelper.insertUser(user) > 0) {
+                                        if (s2.length() < 8 && s5.length() < 8) {
+                                            Toast.makeText(getApplicationContext(), "Mật Khẩu Phải Đủ 8 Ký Tự", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            if (s2.equals(s5)) {
+                                                Boolean chkemail = db.chkemail(s1);
+                                                if (chkemail == true) {
+                                                    User user = new User(s1, s2, s3, s4);
+                                                    if (databaseHelper.insertUser(user) > 0) {
 //                                arrayAdapter.clear();
-                                    arrayList.addAll(databaseHelper.getUser());
+                                                        arrayList.addAll(databaseHelper.getUser());
 //                                arrayAdapter.notifyDataSetChanged();
-                                    Intent i = new Intent(SignUpActivity.this, LogInActivity.class);
-                                    startActivity(i);
-                                    Toast.makeText(SignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                                        Intent i = new Intent(SignUpActivity.this, LogInActivity.class);
+                                                        startActivity(i);
+                                                        Toast.makeText(SignUpActivity.this, "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                } else
+                                                    Toast.makeText(getApplicationContext(), "Tài Khoản Đã Tồn Tại", Toast.LENGTH_SHORT).show();
+                                            } else
+                                                Toast.makeText(getApplicationContext(), "Mật Khẩu Không Đúng", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
                                 }
-                            } else
-                                Toast.makeText(getApplicationContext(), "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
-                        } else
-                            Toast.makeText(getApplicationContext(), "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
         });
         e2.addTextChangedListener(new TextWatcher() {
             @Override

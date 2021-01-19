@@ -31,7 +31,6 @@ public class EditProfile extends Fragment {
 
         View root = inflater.inflate(R.layout.activity_edit_profile, container, false);
         return root;
-
     }
 
     @Override
@@ -57,16 +56,16 @@ public class EditProfile extends Fragment {
             @Override
             public void onClick(View v) {
                String firstname = txtfirstname.getText().toString();
-                String lastname = txtlastname.getText().toString();
-                if(firstname.trim().equals("")||lastname.trim().equals(""))
+               String lastname = txtlastname.getText().toString();
+                if(firstname.trim().equals("") || lastname.trim().equals(""))
                     {
-                        Toast.makeText(getContext(), "Thieu thong tin", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Thiếu Họ Hoặc Tên,Vui Lòng Nhập Đầy Đủ", Toast.LENGTH_SHORT).show();
                     }
                 else
                     {
                         User user = new User(email,password,firstname,lastname);
                         long i = db.updateUser(id, user);
-                        Toast.makeText(getContext(), "Thay doi thong tin thanh cong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Thay Đổi Thông Tin Thành Công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(), NavigationActivity.class);
                         startActivity(intent);
                         p.savePreferences("firstname",firstname);

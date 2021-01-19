@@ -22,7 +22,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="welcomeApp">Welcome to Note</string>
-    <string name="Change">Change your password</string>
+    <string name="Change">Change Your Password</string>
     <string name="CurrentPassword">Enter current password</string>
     <string name="NewPassword">Enter new password</string>
     <string name="Confirm">Enter again password</string>
@@ -44,5 +44,11 @@
     <string name="EnterYourFirstName"> Enter Your First Name</string>
     <string name="EditProfile"> Edit Profile</string>
     <string name="Edit"> Edit Profile</string>
-
+    <string name="Info"> Account Infomation </string>
+    <string name="Email"> Email </string>
+    <string name="FullName"> FullName </string>
+    <string name="Note">Note</string>
+    <string name="Priority">Priority</string>
+    <string name="Status">Status</string>
+    <string name="Category">Category</string>
 </resources>
